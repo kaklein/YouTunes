@@ -1,0 +1,92 @@
+:root {
+  --background-color: #252525;
+  --main-text-color: #4EF3D2;
+  --highlight-text-color: #FFE373;
+}
+
+html {
+	background-color: var(--background-color);
+	height: 100%;
+}
+
+body {
+	color: white;
+	font-family: "Poppins", "Tahoma", sans-serif;
+	font-weight: 400;
+	position: relative;
+	min-height: 100%;
+}
+
+.main-content {
+	margin: 0 auto;
+}
+
+.nav-bar {
+	display: block;
+}
+
+.nav-link {
+	display: inline;
+	margin: 25px;
+}
+
+a {
+	color: var(--main-text-color);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--highlight-text-color);
+	text-decoration: none;
+}
+
+a:visited {
+	color: var(--main-text-color);
+	text-decoration: none;
+}
+
+.button {
+	padding: 5px;
+	font-family: "Poppins", "Tahoma", sans-serif;
+	background-color: var(--main-text-color);
+	color: var(--background-color);
+	width: 100%;
+	margin: auto;
+}
+
+.button:hover {
+	background-color: var(--highlight-text-color);
+	cursor: pointer;
+}
+
+.form-field {
+	margin: 10px;
+}
+
+.form-field label {
+	vertical-align: top;
+}
+
+.section {
+	margin: auto;
+	margin-top: 30px;
+}
+
+.form {
+	width: fit-content;
+}
+
+#results {
+	text-align: center;
+	width: fit-content;
+}
+
+footer {
+	background-color: #3a3a3b;
+	padding: 35px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	width: 100%;
+}
