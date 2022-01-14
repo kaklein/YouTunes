@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<link href="/youtunes/CSS/styles.css" rel="stylesheet" type="text/css"/>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 		<%@page import="java.util.ArrayList, java.util.Arrays" %>
 		
@@ -70,6 +70,7 @@
 			
 						<!-- TO-DO: query database for suggestions and display artist cards -->
 						<%
+							// get lists of selected genres and years
 							ArrayList<String> genreList = new ArrayList<>(Arrays.asList(request.getParameter("genre[]")));
 							ArrayList<String> yearList = new ArrayList<>(Arrays.asList(request.getParameter("year[]")));
 								
