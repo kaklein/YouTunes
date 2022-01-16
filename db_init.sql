@@ -1,12 +1,12 @@
 /*
 Author: Katie Klein
 Course: CSD 460
-Date: 11 January 2022
+Date: 16 January 2022
 Project: YouTunes
 */
 
 /* This MySQL file should be run prior to using the YouTunes application.
-This file will create the youtunes database; an associated user; and tables.
+This file will create the youtunes database, an associated user, and tables.
 */
 
 /* Create database */
@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS albums (
   title VARCHAR(100) NOT NULL,
   price FLOAT NOT NULL,
   genre VARCHAR(50) NOT NULL,
+  img_url VARCHAR(100),
   artist_id INT NOT NULL,
   release_year INT NOT NULL,
   PRIMARY KEY (album_id),
