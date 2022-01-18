@@ -14,10 +14,10 @@ public class JdbcManager {
 	private String jdbcPassword = "";
 	
 	// constructor
-	public JdbcManager(String url, String username, String password) {
-		this.jdbcUrl = url;	
-		this.jdbcUserName = username;
-		this.jdbcPassword = password;
+	public JdbcManager() {
+		this.jdbcUrl = "jdbc:mysql://localhost:3306/youtunes";	
+		this.jdbcUserName = "youtunes_user";
+		this.jdbcPassword = "tunesPass";
 		
 		// call MySQL JDBC driver
 		try {
