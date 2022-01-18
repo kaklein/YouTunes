@@ -27,26 +27,19 @@
 				List<Artist> artistList = artistDao.list();
 						
 				// iterate through list of artists and create an artist card for each one
-				/* each card will display the artist's name. it will have a form with a single hidden input
-					that contains the artist's id. it will have a submit button with the value of the artist's
-					name. the form action is to Details.jsp
-				*/
 				for (Artist artist : artistList) {	
-					String id = String.valueOf(artist.getId());
-					System.out.println(id);
+					String id = String.valueOf(artist.getId()); // get artist Id
 					
-					String name = artist.getFirstName();
-					if (artist.getLastName() != null) {
+					String name = artist.getFirstName(); // get artist name
+					if (artist.getLastName() != null) { // (only include last name if not null)
 						name += " " + artist.getLastName();
 					}
-					System.out.println(name);
 			%>
 				<div class="artist-card">
 					<form action="Details.jsp">
 						<input type="hidden" value="<%=id%>">
 						<img class="artist-card-img" src="">
-						<input type="submit" value="<%=name%>" class="artist-card-name">
-					
+						<input type="submit" value="<%=name%>" class="artist-card-name">					
 					</form>
 				</div>
 			
