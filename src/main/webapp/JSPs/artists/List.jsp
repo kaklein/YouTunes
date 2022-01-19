@@ -39,7 +39,7 @@
 					<form action="Details.jsp" method="post">
 						<input type="hidden" id="artist_id" name="artist_id" value="<%=id%>">
 						<img class="artist-card-img" src="">
-						<input type="submit" value="<%=name%>" class="artist-card-name">					
+						<input type="submit" class="artist-card-name" value="<%=name%>">					
 					</form>
 				</div>
 			
