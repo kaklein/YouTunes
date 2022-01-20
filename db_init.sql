@@ -76,6 +76,10 @@ INSERT INTO artists (first_name)
   VALUES("The Mamas and the Papas");
 INSERT INTO artists (first_name, last_name)
   VALUES("Etta", "James");
+INSERT INTO artists (first_name, last_name)
+	VALUES("Nat King", "Cole");
+INSERT INTO artists (first_name)
+	VALUES("Boston");
 
 /* Populate albums table */
 INSERT INTO albums (title, price, genre, artist_id, release_year)
@@ -128,3 +132,7 @@ INSERT INTO albums (title, price, genre, artist_id, release_year)
   VALUES("If You Can Believe Your Eyes", 10.99, "pop rock", (SELECT artist_id FROM artists WHERE first_name = "The Mamas and the Papas" AND last_name IS NULL), 1966);
 INSERT INTO albums (title, price, genre, artist_id, release_year)
   VALUES("At Last", 12.99, "blues", (SELECT artist_id FROM artists WHERE first_name = "Etta" AND last_name = "James"), 1960);
+INSERT INTO albums (title, price, genre, artist_id, release_year)
+  VALUES("After Midnight", 11.99, "jazz", (SELECT artist_id FROM artists WHERE first_name = "Nat King" AND last_name = "Cole"), 1957);
+INSERT INTO albums (title, price, genre, artist_id, release_year)
+  VALUES("Boston", 15.99, "rock", (SELECT artist_id FROM artists WHERE first_name = "Boston" AND last_name IS NULL), 1976);
