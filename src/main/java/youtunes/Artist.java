@@ -5,11 +5,21 @@ public class Artist {
 	private String firstName;
 	private String lastName;
 	
+	// constructors
+	
 	public Artist(int id, String firstName, String lastName) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
+	
+	public Artist(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	
+	// getters and setters
 	
 	public int getId() {
 		return this.id;
@@ -28,7 +38,12 @@ public class Artist {
 	}
 	
 	public String getLastName() {
-		return this.lastName;
+		if (this.lastName != null) {
+			return this.lastName;
+		}
+		else {
+			return "";
+		}
 	}
 	
 	public void setLastName(String lastName) {
