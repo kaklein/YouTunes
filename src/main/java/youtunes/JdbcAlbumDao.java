@@ -113,7 +113,7 @@ public class JdbcAlbumDao implements AlbumDao {
 				try {
 					ResultSet rs = stmt.executeQuery(sql);
 					while (rs.next() ) {
-						searchResult = new Album(rs.getInt("album_id"), rs.getString("title"), rs.getInt("price"),
+						searchResult = new Album(rs.getInt("album_id"), rs.getString("title"), rs.getFloat("price"),
 								rs.getString("genre"), rs.getString("img_url"), rs.getInt("artist_id"), rs.getInt("release_year")
 							);
 					}
@@ -181,7 +181,7 @@ public class JdbcAlbumDao implements AlbumDao {
 		if (conn != null) {
 			try {
 				Statement stmt = conn.createStatement();
-				String sql = "SELECT * FROM albums WHERE artist_id = " + artist_id;
+				String sql = "SELECT * FROM albums WHERE artist_id = " + artist_id + " ORDER BY release_year DESC";
 				try {
 					ResultSet rs = stmt.executeQuery(sql);
 					while (rs.next() ) { //iterate through ResultSet
@@ -201,6 +201,64 @@ public class JdbcAlbumDao implements AlbumDao {
 			}
 		}
 		return searchResult;
+	}
+	
+	/* method to get list of genres as listed on albums */
+	public List<String> getGenres(){
+		List<String> genreList = new ArrayList<>();
+		
+		// connect to database
+		Connection conn = db.getConn();
+		
+		// SQL query to get all genres in database
+		if (conn != null) {
+			try {
+				Statement stmt = conn.createStatement();
+				String sql = "SELECT DISTINCT genre FROM albums ORDER BY genre";
+				ResultSet rs = stmt.executeQuery(sql);
+				
+				while (rs.next()) {
+					// add each genre to list
+					genreList.add(rs.getString("genre"));
+				}
+			} catch (SQLException e) {
+				System.out.println("Exception getting genres: " + e);
+			}
+		}
+		
+		return genreList;
+	}
+	
+	/* method to get list of individual genres */
+	public List<String> getSubGenres() {
+		List<String> genreList = new ArrayList<>();
+		
+		// connect to database
+		Connection conn = db.getConn();
+		
+		// SQL query to get non-duplicate list of genres in database
+		if (conn != null) {
+			try {
+				Statement stmt = conn.createStatement();
+				String sql = "SELECT DISTINCT genre FROM albums";
+				ResultSet rs = stmt.executeQuery(sql);
+				
+				while(rs.next()) { // iterate through ResultSet
+					// split genre into multiple items by spaces (e.g. "pop rock" becomes ['pop', 'rock'])
+					String[] splitStrings = rs.getString("genre").split(" ");
+					for (String word : splitStrings) {
+						if (!genreList.contains(word)) {
+							genreList.add(word);
+						}
+					}
+				}
+				
+			} catch (SQLException e) {
+				System.out.println("Exception getting genres: " + e);
+			}
+		}
+		
+		return genreList;
 	}
 	
 }
