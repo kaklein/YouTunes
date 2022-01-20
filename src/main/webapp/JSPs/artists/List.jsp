@@ -20,6 +20,9 @@
 			<!-- include top nav menu -->
 			<jsp:include page="//JSPs/TopNav.jsp" flush="true"/>
 			
+			<!-- Add artist button -->
+			<a href=<%= base + "?action=goToNewArtist"%>>Add a new artist</a>
+			
 			<!-- TO-DO: display list of artists -->
 			<%
 				// Make JdbcArtistDao object
