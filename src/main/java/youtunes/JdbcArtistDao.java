@@ -131,7 +131,7 @@ public class JdbcArtistDao implements ArtistDao {
 		if (conn != null) {
 			try {
 				Statement stmt = conn.createStatement();
-				String sql = "UPDATE artists SET first_name = " + artist.getFirstName()+ " last_name = " + artist.getLastName() + " WHERE artist_id = " + artist.getId();
+				String sql = "UPDATE artists SET first_name = '" + artist.getFirstName()+ "', last_name = '" + artist.getLastName() + "' WHERE artist_id = " + artist.getId();
 				stmt.executeUpdate(sql);
 				stmt.close();
 			} catch (SQLException e) {
