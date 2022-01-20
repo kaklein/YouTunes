@@ -49,8 +49,8 @@ public class JdbcArtistDao implements ArtistDao {
 		if (conn != null) {
 			try { 
 				Statement stmt = conn.createStatement();
-				stmt.executeUpdate("INSERT INTO artists('artist_id', 'first_name', 'last_name')"
-						+ "VALUES (" + artist.getId() + ", " + artist.getFirstName() + ", " + artist.getLastName() + ")");
+				stmt.executeUpdate("INSERT INTO artists(first_name, last_name)"
+						+ "VALUES ('" + artist.getFirstName() + "', '" + artist.getLastName() + "')");
 				stmt.close();
 			} catch (SQLException e) { System.out.println("Exception: " + e);
 			} finally {
