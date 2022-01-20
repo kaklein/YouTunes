@@ -5,33 +5,34 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Top Nav</title>
+		<% String base = (String)application.getAttribute("base"); %>
 	</head>
 	
 	<body>
 		<div id="top-nav" class="nav-bar">
 			<!-- Logo -->
 			<div id="logo" class="nav-link">
-				<a href="/youtunes/JSPs/index.jsp"><img src="/youtunes/Images/youtunes-logo-transparent.png" alt="YouTunes logo" width="100"></a>
+				<a href=<%=base + "?action=goToIndex" %>><img src="/youtunes/Images/youtunes-logo-transparent.png" alt="YouTunes logo" width="100"></a>
 			</div>
 			
 			<!-- Artists -->
 			<div id="artists-tab" class="nav-link">
-				<a href="/youtunes/JSPs/artists/List.jsp">ARTISTS</a>
+				<a href=<%=base + "?action=goToArtists" %>>ARTISTS</a>
 			</div>
 			
 			<!-- Discover -->
 			<div id="discover-tab" class="nav-link">
-				<a href="/youtunes/JSPs/Discover.jsp">DISCOVER</a>
+				<a href=<%=base + "?action=goToDiscover" %>>DISCOVER</a>
 			</div>
 			
 			<!-- About -->
 			<div id="about-tab" class="nav-link">
-				<a href="/youtunes/JSPs/About.jsp">ABOUT</a>
+				<a href=<%=base + "?action=goToAbout" %>>ABOUT</a>
 			</div>
 			
 			<!-- Contact -->
 			<div id="contact-tab" class="nav-link">
-				<a href="/youtunes/JSPs/Contact.jsp">CONTACT</a>
+				<a href=<%=base + "?action=goToContact" %>>CONTACT</a>
 			</div>
 	
 		</div>

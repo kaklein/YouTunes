@@ -10,6 +10,8 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 		<%@page import="youtunes.JdbcArtistDao, youtunes.Artist, java.util.List" %>
+		<% String base = (String)application.getAttribute("base"); %>
+		
 		<title>YouTunes | Artists</title>
 	</head>
 	
@@ -36,10 +38,9 @@
 					}
 			%>
 				<div class="artist-card">
-					<form action="Details.jsp" method="post">
-						<input type="hidden" id="artist_id" name="artist_id" value="<%=id%>">
+					<form>
 						<img class="artist-card-img" src="">
-						<input type="submit" class="artist-card-name" value="<%=name%>">					
+						<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>><%=name %></a>				
 					</form>
 				</div>
 			
