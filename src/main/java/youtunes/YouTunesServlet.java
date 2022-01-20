@@ -63,6 +63,9 @@ public class YouTunesServlet extends HttpServlet {
 				case "goToContact":
 					url = base + "Contact.jsp";
 					break;
+				case "goToNewArtist":
+					url = base + "artists/New.jsp";
+					break;
 				case "showArtistDetails":
 					url = base + "artists/Details.jsp";
 					break;
@@ -71,7 +74,7 @@ public class YouTunesServlet extends HttpServlet {
 					break;	
 				case "addArtist":
 					addArtist(request, response);					
-					url = base + "artists/New.jsp";
+					url = base + "artists/List.jsp";
 					break;
 				case "updateArtist":
 					updateArtist(request, response);
