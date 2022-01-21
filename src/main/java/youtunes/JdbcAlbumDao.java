@@ -49,8 +49,8 @@ public class JdbcAlbumDao implements AlbumDao {
 		if (conn != null) {
 			try { 
 				Statement stmt = conn.createStatement();		
-				stmt.executeUpdate("INSERT INTO albums('title', 'price'," +
-						"'genre', 'img_url', artist_id', 'release_year')" +
+				stmt.executeUpdate("INSERT INTO albums(title, price, " +
+						"genre, img_url, artist_id, release_year)" +
 						"VALUES ('" + album.getTitle() + "', " + album.getPrice() +
 						", '" + album.getGenre() + "', '" + album.getImgUrl() + "', " + album.getArtistId() +
 						", " + album.getReleaseYear() + ")");
@@ -201,6 +201,40 @@ public class JdbcAlbumDao implements AlbumDao {
 			}
 		}
 		return searchResult;
+	}
+	
+	/* method to get name of artist */
+	public String getArtistName(Long album_id) {
+		String name = "";
+		
+		// connect to database
+		Connection conn = db.getConn();
+		
+		// SQL query to find artist name associated with album
+		if (conn != null) {
+			try {
+				Statement stmt = conn.createStatement();
+				String sql = "SELECT first_name, last_name FROM artists WHERE artist_id = (SELECT artist_id FROM albums WHERE album_id = " + album_id + ")";
+				try {
+					ResultSet rs = stmt.executeQuery(sql);
+					while (rs.next() ) {
+						String first_name = rs.getString("first_name");
+						String last_name = rs.getString("last_name");
+						
+						name += first_name;
+						if (last_name != null && last_name != "") {
+							name += " " + last_name;
+						}
+					}
+				} catch (SQLException e) {
+					System.out.println("Exception: " + e);
+				}
+			} catch (SQLException e) {
+				System.out.println("Exception getting artist name: " + e);
+			}
+		}
+		
+		return name;
 	}
 	
 	/* method to get list of genres as listed on albums */
