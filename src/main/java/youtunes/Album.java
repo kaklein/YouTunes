@@ -10,9 +10,18 @@ public class Album {
 	private int artistId;
 	private int releaseYear;
 		
-	// constructor
+	// constructors
 	public Album(int id, String title, float price, String genre, String imgUrl, int artistId, int releaseYear) {
 		this.albumId = id;
+		this.title = title;
+		this.price = price;
+		this.genre = genre;
+		this.imgUrl = imgUrl;
+		this.artistId = artistId;
+		this.releaseYear = releaseYear;
+	}
+	
+	public Album(String title, float price, String genre, String imgUrl, int artistId, int releaseYear) {
 		this.title = title;
 		this.price = price;
 		this.genre = genre;
