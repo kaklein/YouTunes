@@ -11,6 +11,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 		<%@page import="youtunes.JdbcArtistDao, youtunes.Artist, java.util.List" %>
 		<% String base = (String)application.getAttribute("base"); %>
+		<jsp:useBean id="artistDao" scope="application" class="youtunes.JdbcArtistDao" />
 		
 		<title>YouTunes | Artists</title>
 	</head>
@@ -23,11 +24,8 @@
 			<!-- Add artist button -->
 			<a href=<%= base + "?action=goToNewArtist"%>>Add a new artist</a>
 			
-			<!-- TO-DO: display list of artists -->
-			<%
-				// Make JdbcArtistDao object
-				JdbcArtistDao artistDao = new JdbcArtistDao();
-				
+			<!-- display list of artists -->
+			<%		
 				// get list of all artists
 				List<Artist> artistList = artistDao.list();
 						
