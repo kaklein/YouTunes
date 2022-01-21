@@ -66,6 +66,9 @@ public class YouTunesServlet extends HttpServlet {
 				case "goToNewArtist":
 					url = base + "artists/New.jsp";
 					break;
+				case "goToNewAlbum":
+					url = base + "albums/New.jsp";
+					break;
 				case "showArtistDetails":
 					url = base + "artists/Details.jsp";
 					break;
@@ -85,8 +88,8 @@ public class YouTunesServlet extends HttpServlet {
 					url = base + "artists/List.jsp";
 					break;
 				case "addAlbum":
-					// TO-DO: call add album function
-					
+					addAlbum(request, response);
+					url = base + "index.jsp";
 					break;
 				case "updateAlbum":
 					// TO-DO: call update album function
@@ -131,6 +134,19 @@ public class YouTunesServlet extends HttpServlet {
 		
 		JdbcArtistDao artistDao = new JdbcArtistDao();
 		artistDao.remove(artistId);
+	}
+	
+	private void addAlbum(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String title = request.getParameter("title");
+		Float price = Float.valueOf(request.getParameter("price"));
+		String genre = request.getParameter("genre");
+		String imgUrl = request.getParameter("img_url");
+		int artistId = Integer.valueOf(request.getParameter("artist_id"));
+		int releaseYear = Integer.valueOf(request.getParameter("release_year"));
+		
+		JdbcAlbumDao albumDao = new JdbcAlbumDao();
+		albumDao.add(new Album(title, price, genre, imgUrl, artistId, releaseYear));
 	}
 	
 }
