@@ -15,6 +15,7 @@ body {
 	font-weight: 400;
 	position: relative;
 	min-height: 100%;
+	padding: 0 0 130px;
 }
 
 .main-content {
@@ -35,15 +36,17 @@ a {
 	text-decoration: none;
 }
 
+a:visited {
+	color: var(--main-text-color);
+	text-decoration: none;
+}
+
 a:hover {
 	color: var(--highlight-text-color);
 	text-decoration: none;
 }
 
-a:visited {
-	color: var(--main-text-color);
-	text-decoration: none;
-}
+
 
 .button {
 	padding: 5px;
