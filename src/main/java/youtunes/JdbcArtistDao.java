@@ -153,6 +153,7 @@ public class JdbcArtistDao implements ArtistDao {
 				String sql = "DELETE FROM artists WHERE artist_id = " + artist_id;
 				stmt.executeUpdate(sql);
 				stmt.close();
+				System.out.println("artist_id " + artist_id + " successfully deleted.");
 			} catch (SQLException e) {
 				System.out.println("Exception deleting artist record: " + e);
 			} finally {
