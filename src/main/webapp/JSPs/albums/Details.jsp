@@ -12,6 +12,10 @@
 		<%@page import="youtunes.JdbcArtistDao, youtunes.Artist, youtunes.JdbcAlbumDao, youtunes.Album" %>
 		<%@ page import="java.util.List, java.util.ArrayList" %>
 		<jsp:useBean id="albumDao" scope="application" class="youtunes.JdbcAlbumDao" />
+		<jsp:useBean id="artistDao" scope="application" class="youtunes.JdbcArtistDao" />
+		
+		<% String base = (String)application.getAttribute("base"); %>
+		
 		<title>YouTunes | Album Details</title>
 	</head>
 	
@@ -36,7 +40,7 @@
 					<!-- display album details -->
 					<div class=album-details>
 						<h1 class=album-title><%=album.getTitle() %></h1>
-						<h2 class="album-artist"><%=artist_name %></h2>
+						<h2 class="album-artist"><a href=<%=base + "?action=showArtistDetails&artist_id=" + album.getArtistId()%>><%=artist_name %></a></h2>
 						<h3 class="year-genre"><%=album.getReleaseYear() %> | <%=album.getGenre() %></h3>
 						<img class="album-img" src="">
 						<div class="album-purchase">
@@ -47,18 +51,21 @@
 					
 					<!--  TO-DO: link back to artist page -->
 					
-					<!-- TO-DO: make this work with servlet - form to update album information -->
+					<!-- form to update album information -->
 					<div class="form">
-						<form id="album-update-form" action="" method="POST">
+						<form>
 							<h3>Update Album</h3>
+							
+							<input type="hidden" name="action" value="updateAlbum">
+							<input type="hidden" name="album_id" value="<%=album.getAlbumId() %>">
+							
 							<label for="title">Title:</label>
 							<input type="text" id="title" name="title" value="<%=album.getTitle() %>">
 							
-							<label for="artist">Artist:</label>
-							<select id="artist" name="artist">
+							<label for="artist_id">Artist:</label>
+							<select id="artist_id" name="artist_id">
 								<%
 									// populate select options with artists from database
-									JdbcArtistDao artistDao = new JdbcArtistDao();
 									List<Artist> artistOptions = artistDao.list();
 									for (Artist artist : artistOptions) {
 								%>
@@ -93,6 +100,14 @@
 							<input type="submit" class="button" value="Update album">
 						</form>
 					</div>
+					
+					<!-- delete button -->
+					<form>
+						<input type="hidden" name="action" value="removeAlbum">
+						<input type="hidden" name="album_id" value="<%=album_id %>">
+						<input type="submit" class="button important-button" value="Delete album from database">
+					</form>
+					
 			<%										
 				} else {
 					System.out.println("artist_id is null");
