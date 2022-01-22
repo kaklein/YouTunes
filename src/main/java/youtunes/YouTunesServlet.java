@@ -13,6 +13,8 @@ import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import youtunes.Album;
 import youtunes.Artist;
@@ -49,6 +51,7 @@ public class YouTunesServlet extends HttpServlet {
 		
 		if (action != null) {
 			switch (action) {
+				// nav bar
 				case "goToIndex":
 					break;
 				case "goToArtists":
@@ -63,18 +66,13 @@ public class YouTunesServlet extends HttpServlet {
 				case "goToContact":
 					url = base + "Contact.jsp";
 					break;
+				// artist pages/functions
 				case "goToNewArtist":
 					url = base + "artists/New.jsp";
-					break;
-				case "goToNewAlbum":
-					url = base + "albums/New.jsp";
 					break;
 				case "showArtistDetails":
 					url = base + "artists/Details.jsp";
 					break;
-				case "showAlbumDetails":
-					url = base + "albums/Details.jsp";
-					break;	
 				case "addArtist":
 					addArtist(request, response);					
 					url = base + "artists/List.jsp";
@@ -87,17 +85,24 @@ public class YouTunesServlet extends HttpServlet {
 					removeArtist(request, response);
 					url = base + "artists/List.jsp";
 					break;
+				// album pages/functions
+				case "goToNewAlbum":
+					url = base + "albums/New.jsp";
+					break;
+				case "showAlbumDetails":
+					url = base + "albums/Details.jsp";
+					break;	
 				case "addAlbum":
 					addAlbum(request, response);
 					url = base + "index.jsp";
 					break;
 				case "updateAlbum":
-					// TO-DO: call update album function
-					
+					updateAlbum(request, response);
+					url = base + "index.jsp";					
 					break;
 				case "removeAlbum":
-					// TO-DO: call remove album function
-					
+					removeAlbum(request, response);
+					url = base + "index.jsp";					
 					break;
 			}
 		}
@@ -147,6 +152,31 @@ public class YouTunesServlet extends HttpServlet {
 		
 		JdbcAlbumDao albumDao = new JdbcAlbumDao();
 		albumDao.add(new Album(title, price, genre, imgUrl, artistId, releaseYear));
+	}
+	
+	private void updateAlbum(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		int albumId = Integer.valueOf(request.getParameter("album_id"));
+		String title = request.getParameter("title");
+		Float price = Float.valueOf(request.getParameter("price"));
+		String genre = request.getParameter("genre");
+		String imgUrl = request.getParameter("img_url");
+		int artistId = Integer.valueOf(request.getParameter("artist_id"));
+		int releaseYear = Integer.valueOf(request.getParameter("release_year"));
+		
+		Album albumToUpdate = new Album(albumId, title, price, genre, imgUrl, artistId, releaseYear);
+		System.out.println(albumToUpdate.toString());
+		
+		JdbcAlbumDao albumDao = new JdbcAlbumDao();
+		albumDao.update(albumToUpdate);
+	}
+	
+	private void removeAlbum(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Long albumId = Long.valueOf(request.getParameter("album_id"));
+		
+		JdbcAlbumDao albumDao = new JdbcAlbumDao();
+		albumDao.remove(albumId);
 	}
 	
 }
