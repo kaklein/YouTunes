@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -138,9 +139,9 @@ public class JdbcAlbumDao implements AlbumDao {
 		if (conn != null) {
 			try {
 				Statement stmt = conn.createStatement();
-				String sql = "UPDATE albums SET title = " + album.getTitle()+ " price = " + album.getPrice() + 
-						"genre = " + album.getGenre() + " img_url = " + album.getImgUrl() + " release_year = " + album.getReleaseYear() +
-					" WHERE album_id = " + album.getAlbumId();
+				String sql = "UPDATE albums SET title = '" + album.getTitle()+ "', price = " + album.getPrice() + 
+						", genre = '" + album.getGenre() + "', img_url = '" + album.getImgUrl() + "', release_year = " + album.getReleaseYear() +
+					", artist_id = " + album.getArtistId() + " WHERE album_id = " + album.getAlbumId();
 				stmt.executeUpdate(sql);
 				stmt.close();
 			} catch (SQLException e) {
@@ -162,6 +163,7 @@ public class JdbcAlbumDao implements AlbumDao {
 				String sql = "DELETE FROM albums WHERE album_id = " + album_id;
 				stmt.executeUpdate(sql);
 				stmt.close();
+				System.out.println("album_id " + album_id + " successfully deleted.");
 			} catch (SQLException e) {
 				System.out.println("Exception deleting album record: " + e);
 			} finally {
@@ -295,4 +297,68 @@ public class JdbcAlbumDao implements AlbumDao {
 		return genreList;
 	}
 	
+	/* method to get decade options based on release_year */
+	public List<String> getYears() {
+		List<String> years = new ArrayList<>();
+		
+		// connect to database
+		Connection conn = db.getConn();
+		
+		// SQL query to get all distinct years from database
+		if (conn != null) {
+			try {
+				Statement stmt = conn.createStatement();
+				String sql = "SELECT DISTINCT release_year FROM albums ORDER BY release_year";
+				ResultSet rs = stmt.executeQuery(sql);
+				
+				while(rs.next()) {
+					String currentYearBase = String.valueOf((rs.getInt("release_year") / 10));
+					if (!years.contains(currentYearBase)) {
+						years.add(currentYearBase);
+					}
+				}
+			} catch (SQLException e) {
+				System.out.println("Exception getting release years: " + e);
+			}
+		}
+		
+		return years;
+	}
+	
+	/* method to get artist suggestions based on input on Discover.jsp page */
+	public List<Integer> getArtistSuggestions(List<String> selectedGenresList, List<String> selectedYearsList) {
+		List<Integer> artistSuggestions = new ArrayList<>();
+		
+		// get String with regex for genres SQL query
+		String regexGenres = selectedGenresList.get(0);
+		for (int i = 1; i < selectedGenresList.size(); i++) {
+			regexGenres += "|" + selectedGenresList.get(i);
+		}
+		
+		// get String with regex for years SQL query
+		String regexYears = selectedYearsList.get(0);
+		for (int i = 1; i < selectedYearsList.size(); i++) {
+			regexYears += "|" + selectedYearsList.get(i);
+		}
+		
+		// connect to database
+		Connection conn = db.getConn();
+		
+		// SQL query to get artist suggestions based on selections
+		if (conn != null) {
+			try {
+				Statement stmt = conn.createStatement();
+				String sql = "SELECT DISTINCT artist_id FROM albums WHERE genre REGEXP '" + regexGenres +
+						"' AND release_year REGEXP '" + regexYears + "'";
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next() ) {
+					artistSuggestions.add(rs.getInt("artist_id"));
+				}
+			} catch (SQLException e) {
+				System.out.println("Exception getting artist suggestions: " + e);
+			}
+		}
+		
+		return artistSuggestions;
+	}
 }
