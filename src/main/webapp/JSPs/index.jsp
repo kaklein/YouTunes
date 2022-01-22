@@ -32,9 +32,7 @@
 				// iterate through list of artists and create an artist card for each one
 				for (Album album : albumList) {	
 					// get artist name
-					String artist_name = albumDao.getArtistName(Long.valueOf(album.getAlbumId()));
-					System.out.println(artist_name);
-			
+					String artist_name = albumDao.getArtistName(Long.valueOf(album.getAlbumId()));			
 			%>
 					<!-- display album card -->
 					<div class="album-card">
