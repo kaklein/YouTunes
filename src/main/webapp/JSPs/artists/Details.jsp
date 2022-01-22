@@ -81,6 +81,13 @@
 						
 						<input type="submit" class="button" value="Update artist"/>
 					</form>
+					
+					<!-- delete button -->
+					<form>
+						<input type="hidden" name="action" value="removeArtist">
+						<input type="hidden" name="artist_id" value="<%=artist_id %>">
+						<input type="submit" class="button important-button" value="Delete artist from database">
+					</form>
 			<%					
 				
 				} else {
