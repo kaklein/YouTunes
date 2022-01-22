@@ -8,7 +8,12 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;700&family=VT323&display=swap" rel="stylesheet">
-		<%@page import="java.util.ArrayList, java.util.Arrays" %>
+		<%@page import="java.util.ArrayList, java.util.List, java.util.Arrays" %>
+		<%@page import="youtunes.Artist" %>
+		<% String base = (String)application.getAttribute("base"); %>
+		<jsp:useBean id="albumDao" scope="application" class="youtunes.JdbcAlbumDao" />
+		<jsp:useBean id="artistDao" scope="application" class="youtunes.JdbcArtistDao" />
+		
 		
 		<title>YouTunes | Discover</title>
 	</head>
@@ -27,27 +32,34 @@
 						
 						<div class="form-field" id="genre-select">
 							<label for="genre">Genre(s):</label>
-							<!-- TO-DO: replace hard-coded options with generation of genres from database -->
+							<!-- select control for sub-genres -->
 							<select id="genre" name="genre[]" multiple>
-								<option value="pop">pop</option>
-								<option value="rock">rock</option>
-								<option value="hip hop">hip hop</option>
-								<option value="indie">indie</option>
+								<%
+									// get sub genre options from database
+									List<String> subGenreList = albumDao.getSubGenres();
+									for (String genre : subGenreList) {
+								%>
+										<option value=<%=genre %>><%=genre %></option>
+								<%
+									}
+								%>
 							</select>
 						</div>
 						
 						<div class="form-field" id="year-select">
 							<label for="year">Year(s):</label>
-							<!-- TO-DO: replace hard-coded options with generation of years from database -->						
+							<!-- Genre select -->						
 							<select id="year" name="year[]" multiple>
-								<option value="1950">1950s</option>
-								<option value="1960">1960s</option>
-								<option value="1970">1970s</option>
-								<option value="1980">1980s</option>
-								<option value="1990">1990s</option>
-								<option value="2000">2000s</option>
-								<option value="2010">2010s</option>
-								<option value="2020">2020 - present</option>
+								<%
+									// get decade options from database
+									List<String> yearsList = albumDao.getYears();
+									for (String yearBase : yearsList) {
+										String yearOption = yearBase + "0s";
+								%>
+										<option value=<%=yearBase %>><%=yearOption %></option>
+								<%	
+									}
+								%>
 							</select>
 						</div>		
 						
@@ -68,23 +80,31 @@
 							<h2>We think you'll like:</h2>
 						</div>
 			
-						<!-- TO-DO: query database for suggestions and display artist cards -->
+						<!-- query database for suggestions and display artist cards -->
 						<%
-							// get lists of selected genres and years
-							ArrayList<String> genreList = new ArrayList<>(Arrays.asList(request.getParameter("genre[]")));
-							ArrayList<String> yearList = new ArrayList<>(Arrays.asList(request.getParameter("year[]")));
+							// get list of matching artist_ids
+							List<String> selectedGenreList = Arrays.asList(request.getParameter("genre[]"));
+							List<String> selectedYearsList = Arrays.asList(request.getParameter("year[]"));
+							List<Integer> artistSuggestionIds = albumDao.getArtistSuggestions(selectedGenreList, selectedYearsList);
+							
+							// iterate through list of artist ids and get artist objects
+							for (int artist_id : artistSuggestionIds) {
+								// get Artist object
+								Artist currentArtist = artistDao.find(Long.valueOf(artist_id));
+								String id = String.valueOf(currentArtist.getId()); // get artist Id
 								
-							if (genreList.contains("pop")) {
-								out.println("<p>Michael Jackson</p>");
-							}
-							if (genreList.contains("rock")) {
-								out.println("<p>Muse</p>");
-							}
-							if (yearList.contains("1960")){
-								out.println("<p>The Mamas and the Papas</p>");
-							}
-							if (yearList.contains("2020")) {
-								out.println("<p>Phoebe Bridgers</p>");
+								String name = currentArtist.getFirstName(); // get artist name
+								if (currentArtist.getLastName() != null) { // (only include last name if not null)
+									name += " " + currentArtist.getLastName();
+								}
+						%>
+								<div class="artist-card">
+									<form>
+										<img class="artist-card-img" src="">
+										<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>><%=name %></a>				
+									</form>
+								</div>								
+						<%
 							}
 						%>
 				</div>
