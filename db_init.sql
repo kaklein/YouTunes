@@ -127,7 +127,7 @@ INSERT INTO albums (title, price, genre, artist_id, release_year)
 INSERT INTO albums (title, price, genre, artist_id, release_year)
   VALUES("Face Value", 13.99, "pop rock", (SELECT artist_id FROM artists WHERE first_name = "Phil" AND last_name = "Collins"), 1981);
 INSERT INTO albums (title, price, genre, artist_id, release_year)
-  VALUES("The Miseducation of Lauryn Hill", 14.99, "hip hop", (SELECT artist_id FROM artists WHERE first_name = "Lauryn" AND last_name = "Hill"), 1998);
+  VALUES("The Miseducation of Lauryn Hill", 14.99, "hiphop", (SELECT artist_id FROM artists WHERE first_name = "Lauryn" AND last_name = "Hill"), 1998);
 INSERT INTO albums (title, price, genre, artist_id, release_year)
   VALUES("If You Can Believe Your Eyes", 10.99, "pop rock", (SELECT artist_id FROM artists WHERE first_name = "The Mamas and the Papas" AND last_name IS NULL), 1966);
 INSERT INTO albums (title, price, genre, artist_id, release_year)
