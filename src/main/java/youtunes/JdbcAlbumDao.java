@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -293,6 +294,8 @@ public class JdbcAlbumDao implements AlbumDao {
 				System.out.println("Exception getting genres: " + e);
 			}
 		}
+		// sort list alphabetically
+		Collections.sort(genreList);
 		
 		return genreList;
 	}
