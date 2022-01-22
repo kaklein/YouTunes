@@ -25,7 +25,7 @@
 			<!-- Add album button -->
 			<a href=<%= base + "?action=goToNewAlbum"%>>Add a new album</a>			
 			
-			<!-- TO-DO: Album display -->
+			<!-- Album display -->
 			<%
 				List<Album> albumList = albumDao.list();
 
@@ -35,20 +35,18 @@
 					String artist_name = albumDao.getArtistName(Long.valueOf(album.getAlbumId()));			
 			%>
 					<!-- display album card -->
-					<div class="album-card">
-							<form>
+					<div class="album-card card">
 								<!-- display album title, which is a link to album details -->
 								<a href=<%=base + "?action=showAlbumDetails&album_id=" + album.getAlbumId()%>><%=album.getTitle() %></a>
 								
 								<!-- album cover image -->
-								<img class="album-card-img" src="">
+								<img class="album-card-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>
 								
 								<!-- artist name -->
 								<p><%=artist_name %></p>
 								
 								<!-- release year -->
 								<p class="album-card-year"><%=album.getReleaseYear() %></p>
-							</form>
 						</div>
 			<%
 				} // end album loop

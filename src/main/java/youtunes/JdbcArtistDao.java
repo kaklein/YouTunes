@@ -49,8 +49,8 @@ public class JdbcArtistDao implements ArtistDao {
 		if (conn != null) {
 			try { 
 				Statement stmt = conn.createStatement();
-				stmt.executeUpdate("INSERT INTO artists(first_name, last_name)"
-						+ "VALUES ('" + artist.getFirstName() + "', '" + artist.getLastName() + "')");
+				stmt.executeUpdate("INSERT INTO artists(first_name, last_name, img_url)"
+						+ "VALUES ('" + artist.getFirstName() + "', '" + artist.getLastName() + "', '" + artist.getImgUrl() + "')");
 				stmt.close();
 			} catch (SQLException e) { System.out.println("Exception: " + e);
 			} finally {
@@ -71,12 +71,12 @@ public class JdbcArtistDao implements ArtistDao {
 		if (conn != null) {
 			try {
 				Statement stmt = conn.createStatement();
-				String sql = "SELECT artist_id, first_name, last_name FROM artists ORDER BY first_name";
+				String sql = "SELECT artist_id, first_name, last_name, img_url FROM artists ORDER BY first_name";
 				try {
 					ResultSet rs = stmt.executeQuery(sql);
 					while (rs.next()) { //iterate through ResultSet
 						// create Artist object
-						Artist currentArtist = new Artist(rs.getInt("artist_id"), rs.getString("first_name"), rs.getString("last_name"));
+						Artist currentArtist = new Artist(rs.getInt("artist_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("img_url"));
 						artistList.add(currentArtist); // add Artist object to list
 					}
 					rs.close();
@@ -104,11 +104,11 @@ public class JdbcArtistDao implements ArtistDao {
 		if (conn != null) {
 			try {
 				Statement stmt = conn.createStatement();
-				String sql = "SELECT artist_id, first_name, last_name FROM artists WHERE artist_id = " + artist_id;
+				String sql = "SELECT artist_id, first_name, last_name, img_url FROM artists WHERE artist_id = " + artist_id;
 				try {
 					ResultSet rs = stmt.executeQuery(sql);
 					while (rs.next() ) {
-						searchResult = new Artist(rs.getInt("artist_id"), rs.getString("first_name"), rs.getString("last_name"));
+						searchResult = new Artist(rs.getInt("artist_id"), rs.getString("first_name"), rs.getString("last_name"), rs.getString("img_url"));
 					}
 				} catch (SQLException e) {
 					System.out.println("Exception finding artist by id: " + e);
@@ -131,7 +131,8 @@ public class JdbcArtistDao implements ArtistDao {
 		if (conn != null) {
 			try {
 				Statement stmt = conn.createStatement();
-				String sql = "UPDATE artists SET first_name = '" + artist.getFirstName()+ "', last_name = '" + artist.getLastName() + "' WHERE artist_id = " + artist.getId();
+				String sql = "UPDATE artists SET first_name = '" + artist.getFirstName()+ "', last_name = '" + artist.getLastName() + 
+						"', img_url = '" + artist.getImgUrl() + "' WHERE artist_id = " + artist.getId();
 				stmt.executeUpdate(sql);
 				stmt.close();
 			} catch (SQLException e) {

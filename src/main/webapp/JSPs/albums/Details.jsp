@@ -42,7 +42,7 @@
 						<h1 class=album-title><%=album.getTitle() %></h1>
 						<h2 class="album-artist"><a href=<%=base + "?action=showArtistDetails&artist_id=" + album.getArtistId()%>><%=artist_name %></a></h2>
 						<h3 class="year-genre"><%=album.getReleaseYear() %> | <%=album.getGenre() %></h3>
-						<img class="album-img" src="">
+						<img class="album-card-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>
 						<div class="album-purchase">
 							<h3 class="inline">$<%=String.format("%.2f", album.getPrice()) %></h3>
 							<button type="button" class="button">Purchase</button>

@@ -82,8 +82,10 @@
 						<%
 							// get list of genre selection(s)
 							List<String> selectedGenresList = new ArrayList<>();
-							if(request.getParameterValues("genre[]") != null) {
+							List<String> selectedYearsList = new ArrayList<>();
+							if(request.getParameterValues("genre[]") != null && request.getParameterValues("year[]") !=null) {
 								selectedGenresList = Arrays.asList(request.getParameterValues("genre[]"));
+								selectedYearsList = Arrays.asList(request.getParameterValues("year[]"));
 							} else {
 						%>
 								<!-- message if submitted with making selections -->
@@ -91,12 +93,6 @@
 									<h3>Please select at least one genre and at least one decade.</h3>
 								</div>
 						<%
-							}
-							
-							// get list of year selection(s)
-							List<String> selectedYearsList = new ArrayList<>();
-							if(request.getParameterValues("year[]") != null) {
-								selectedYearsList = Arrays.asList(request.getParameterValues("year[]"));
 							}
 							
 							if (!selectedGenresList.isEmpty() && !selectedYearsList.isEmpty()) {
@@ -159,7 +155,7 @@
 											<!-- display artist card for each suggestion -->
 											<div class="artist-card">
 												<form>
-													<img class="artist-card-img" src="">
+													<img class="artist-card-img" src=<%= "Images/artists/" + currentArtist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>
 													<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>><%=name %></a>				
 												</form>
 											</div>								

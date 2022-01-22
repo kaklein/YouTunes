@@ -115,9 +115,10 @@ public class YouTunesServlet extends HttpServlet {
 				throws ServletException, IOException {
 		String firstName = request.getParameter("first_name");
 		String lastName = request.getParameter("last_name");
+		String imgUrl = request.getParameter("img_url");
 		
 		JdbcArtistDao artistDao = new JdbcArtistDao();
-		artistDao.add(new Artist(firstName, lastName));
+		artistDao.add(new Artist(firstName, lastName, imgUrl));
 	}
 	
 	private void updateArtist(HttpServletRequest request, HttpServletResponse response)
@@ -125,8 +126,9 @@ public class YouTunesServlet extends HttpServlet {
 		String firstName = request.getParameter("first_name");
 		String lastName = request.getParameter("last_name");
 		String artistId = request.getParameter("artist_id");
+		String imgUrl = request.getParameter("img_url");
 		
-		Artist artistToUpdate = new Artist(Integer.valueOf(artistId), firstName, lastName);
+		Artist artistToUpdate = new Artist(Integer.valueOf(artistId), firstName, lastName, imgUrl);
 		System.out.println(artistToUpdate.toString());
 		
 		JdbcArtistDao artistDao = new JdbcArtistDao();

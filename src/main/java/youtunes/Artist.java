@@ -4,16 +4,18 @@ public class Artist {
 	private int id;
 	private String firstName;
 	private String lastName;
+	private String imgUrl;
 	
 	// constructors
 	
-	public Artist(int id, String firstName, String lastName) {
+	public Artist(int id, String firstName, String lastName, String imgUrl) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.imgUrl = imgUrl;
 	}
 	
-	public Artist(String firstName, String lastName) {
+	public Artist(String firstName, String lastName, String imgUrl) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
@@ -50,10 +52,19 @@ public class Artist {
 		this.lastName = lastName;
 	}
 	
+	public String getImgUrl() {
+		return this.imgUrl;
+	}
+	
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Artist{artistId=" + this.id + ", firstName=" + this.firstName +
-				", lastName=" + this.lastName + "}";
+				", lastName=" + this.lastName + ", imgUrl=" + this.imgUrl + "}";
 	}
 	
 }

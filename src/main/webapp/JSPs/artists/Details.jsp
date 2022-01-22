@@ -42,8 +42,9 @@
 					}
 			%>
 					<!-- display artist details -->
-					<div class=artist-details>
-						<h1 class=artist-details-name><%=name %></h1>
+					<div class="artist-card card">
+						<h1 class="artist-details-name"><%=name %></h1>
+						<img class="artist-card-img" src=<%= "Images/artists/" + artist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>
 					</div>
 			<%					
 					// TO-DO: get list of artist's albums from database
@@ -59,7 +60,7 @@
 							<form>
 								<a href=<%=base + "?action=showAlbumDetails&album_id=" + album_id + 
 								"&artist_name=" + name%>><%=album.getTitle() %></a>
-								<img class="album-card-img" src="">
+								<img class="album-card-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>
 								<p class="album-card-year"><%=album.getReleaseYear() %></p>
 							</form>
 						</div>
@@ -78,6 +79,9 @@
 						
 						<label for="last_name">Last name:</label>
 						<input type="text" id="last_name" name="last_name" value="<%=artist.getLastName() %>"/>
+						
+						<label for="img_url">Image URL:</label>
+						<input type="text" id="img_url" name="img_url" value="<%=artist.getImgUrl() %>">
 						
 						<input type="submit" class="button" value="Update artist"/>
 					</form>

@@ -38,9 +38,9 @@
 						name += " " + artist.getLastName();
 					}
 			%>
-				<div class="artist-card">
+				<div class="artist-card card">
 					<form>
-						<img class="artist-card-img" src="">
+						<img class="artist-card-img" src=<%= "Images/artists/" + artist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>
 						<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>><%=name %></a>				
 					</form>
 				</div>

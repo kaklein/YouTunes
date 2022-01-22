@@ -32,6 +32,9 @@
 				<label for="last_name">Last name:</label>
 				<input type="text" id="last_name" name="last_name" placeholder="Lennon"/>
 				
+				<label for="img_url">Image URL:</label>
+				<input type="text" id="img_url" name="img_url">
+				
 				<input type="submit" class="button" value="Add artist"/>		
 			</form>
 			
