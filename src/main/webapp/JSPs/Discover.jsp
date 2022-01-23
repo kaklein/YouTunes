@@ -33,36 +33,54 @@
 						<p>Please select at least one genre and at least one decade.</p>
 						
 						<div class="form-field" id="genre-select">
-							<label for="genre">Genre(s):</label>
-							<!-- select control for sub-genres -->
-							<select id="genre" name="genre[]" multiple>
-								<%
-									// get sub genre options from database
-									List<String> subGenreList = albumDao.getSubGenres();
-									for (String genre : subGenreList) {
-								%>
-										<option value=<%=genre %>><%=genre %></option>
-								<%
-									}
-								%>
-							</select>
+							<h3>Genre(s):</h3>
+							<%
+								// get sub genre options from database
+								List<String> subGenreList = albumDao.getSubGenres();
+								
+								// get previous checked options, if any
+								List<String> previousSelectedGenres;
+								if (request.getParameterValues("genre[]") != null) {
+									previousSelectedGenres = Arrays.asList(request.getParameterValues("genre[]"));
+								} else{
+									previousSelectedGenres = new ArrayList<>();
+								}
+								
+								for (String genre : subGenreList) {								
+							%>
+									<!-- create checkbox for each subgenre (if checked in previous submission, keep it checked) -->
+									<input type="checkbox" name="genre[]" id=<%=genre %> value=<%=genre %>
+										<%if(previousSelectedGenres.contains(genre)){ %> checked <% } %>/>
+									<label for =<%=genre%>><%=genre %></label>			
+							<%
+								}
+							%>
 						</div>
 						
 						<div class="form-field" id="year-select">
-							<label for="year">Decade(s):</label>
-							<!-- Genre select -->						
-							<select id="year" name="year[]" multiple>
-								<%
-									// get decade options from database
-									List<String> yearsList = albumDao.getYears();
-									for (String yearBase : yearsList) {
-										String yearOption = yearBase + "0s";
-								%>
-										<option value=<%=yearBase %>><%=yearOption %></option>
-								<%	
-									}
-								%>
-							</select>
+							<h3>Decades(s):</h3>
+							<%
+								// get decade options from database
+								List<String> yearsList = albumDao.getYears();
+								
+								// get previous checked options, if any
+								List<String> previousSelectedYears;
+								if (request.getParameterValues("year[]") != null) {
+									previousSelectedYears = Arrays.asList(request.getParameterValues("year[]"));
+								} else {
+									previousSelectedYears = new ArrayList<>();
+								}
+							
+								for (String yearBase : yearsList) {
+									String yearOption = yearBase + "0s";
+							%>
+									<!-- create checkbox for each decade (if checked in previous submission, keep it checked) -->
+									<input type="checkbox" name="year[]" id=<%=yearBase %> value=<%= yearBase%>
+										<%if(previousSelectedYears.contains(yearBase)){ %> checked <%} %>/>
+									<label for=<%=yearBase %>><%=yearOption %></label>
+							<%	
+								}
+							%>
 						</div>		
 						
 						<div class="form-field">
@@ -155,7 +173,7 @@
 											<!-- display artist card for each suggestion -->
 											<div class="artist-card">
 												<form>
-													<img class="artist-card-img" src=<%= "Images/artists/" + currentArtist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>
+													<img class="artist-card-img" src=<%= "Images/artists/" + currentArtist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %> width="100">
 													<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>><%=name %></a>				
 												</form>
 											</div>								
