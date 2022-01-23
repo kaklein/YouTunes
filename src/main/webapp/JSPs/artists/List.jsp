@@ -22,7 +22,7 @@
 			<jsp:include page="//JSPs/TopNav.jsp" flush="true"/>
 			
 			<!-- Add artist button -->
-			<a href=<%= base + "?action=goToNewArtist"%>>Add a new artist</a>
+			<a href=<%= base + "?action=goToNewArtist"%> class="button">Add a new artist</a>
 			
 			<!-- display list of artists -->
 			<%		
@@ -38,13 +38,12 @@
 						name += " " + artist.getLastName();
 					}
 			%>
-				<div class="artist-card card">
-					<form>
-						<img class="artist-card-img" src=<%= "Images/artists/" + artist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>
-						<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>><%=name %></a>				
-					</form>
-				</div>
-			
+				<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>>
+					<div class="artist-card card">
+						<h1><%=name %></h1>
+						<img class="small-img" src=<%= "Images/artists/" + artist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>		
+					</div>
+				</a>
 			<%
 				}				
 			%>

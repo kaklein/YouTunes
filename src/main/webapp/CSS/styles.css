@@ -19,7 +19,8 @@ body {
 }
 
 .main-content {
-	margin: 0 auto;
+	width: 90%;
+	margin: auto;
 }
 
 .nav-bar {
@@ -46,14 +47,12 @@ a:hover {
 	text-decoration: none;
 }
 
-
-
-.button {
+.button, a.button {
 	padding: 5px;
 	font-family: "Poppins", "Tahoma", sans-serif;
 	background-color: var(--main-text-color);
 	color: var(--background-color);
-	width: 100%;
+	width: fit-content;
 	margin: auto;
 }
 
@@ -64,8 +63,34 @@ a:hover {
 
 .card {
 	border: 1px solid yellow;
-	padding: 5px;
-	margin: 5px;
+	padding: 10px;
+	margin: 10px;
+	height: fit-content;
+	width: fit-content;
+}
+
+.small-img {
+	width: 200px;
+	height: 200px;
+}
+
+.large-img {
+	width: 300px;
+	height: 300px;
+}
+
+.left-div {
+	float: left;
+	padding: 10px;
+}
+
+.right-div {
+	float: right;
+	padding: 10px;
+}
+
+.inline {
+	display: inline;
 }
 
 .form-field {

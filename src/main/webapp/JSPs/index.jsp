@@ -23,7 +23,7 @@
 			<jsp:include page="TopNav.jsp" flush="true"/>
 			
 			<!-- Add album button -->
-			<a href=<%= base + "?action=goToNewAlbum"%>>Add a new album</a>			
+			<a href=<%= base + "?action=goToNewAlbum"%> class="button">Add a new album</a>			
 			
 			<!-- Album display -->
 			<%
@@ -34,20 +34,19 @@
 					// get artist name
 					String artist_name = albumDao.getArtistName(Long.valueOf(album.getAlbumId()));			
 			%>
-					<!-- display album card -->
-					<div class="album-card card">
-								<!-- display album title, which is a link to album details -->
-								<a href=<%=base + "?action=showAlbumDetails&album_id=" + album.getAlbumId()%>><%=album.getTitle() %></a>
-								
-								<!-- album cover image -->
-								<img class="album-card-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>
-								
-								<!-- artist name -->
-								<p><%=artist_name %></p>
-								
-								<!-- release year -->
-								<p class="album-card-year"><%=album.getReleaseYear() %></p>
-						</div>
+					<!-- display album card, which links to album details-->
+					<a href=<%=base + "?action=showAlbumDetails&album_id=" + album.getAlbumId()%>>
+					<div class="album-card card">				
+						<!-- album title -->
+						<h1><%=album.getTitle() %></h1>
+						
+						<!-- album cover image -->
+						<img class="small-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>
+						
+						<!-- artist name -->
+						<h2><%=artist_name %></h2>
+					</div>
+					</a>
 			<%
 				} // end album loop
 			%>

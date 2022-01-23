@@ -43,11 +43,11 @@
 			%>
 					<!-- display artist details -->
 					<div class="artist-card card">
-						<h1 class="artist-details-name"><%=name %></h1>
-						<img class="artist-card-img" src=<%= "Images/artists/" + artist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>
+						<h1><%=name %></h1>
+						<img class="large-img" src=<%= "Images/artists/" + artist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>
 					</div>
 			<%					
-					// TO-DO: get list of artist's albums from database
+					// get list of artist's albums from database
 					JdbcAlbumDao albumDao = new JdbcAlbumDao();
 					List<Album> albumList = albumDao.findByArtistId(artist_id);
 					
@@ -56,14 +56,18 @@
 						String album_id = String.valueOf(album.getAlbumId()); // get album Id					
 			%>
 						<!-- display album card -->
-						<div class="album-card">
-							<form>
-								<a href=<%=base + "?action=showAlbumDetails&album_id=" + album_id + 
-								"&artist_name=" + name%>><%=album.getTitle() %></a>
-								<img class="album-card-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>
-								<p class="album-card-year"><%=album.getReleaseYear() %></p>
-							</form>
-						</div>
+						<a href=<%=base + "?action=showAlbumDetails&album_id=" + album_id + "&artist_name=" + name%>>
+							<div class="album-card card">
+								<div class="left-div">
+									<img class="small-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>				
+								</div>
+								
+								<div class="right-div">
+									<h1><%=album.getTitle() %></h1>
+									<h2><%=album.getReleaseYear() %></h2>
+								</div>
+							</div>
+						</a>
 			<%
 					} // end album for loop
 			%>

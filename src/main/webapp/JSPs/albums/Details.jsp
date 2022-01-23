@@ -38,18 +38,25 @@
 										
 			%>
 					<!-- display album details -->
-					<div class=album-details>
-						<h1 class=album-title><%=album.getTitle() %></h1>
-						<h2 class="album-artist"><a href=<%=base + "?action=showArtistDetails&artist_id=" + album.getArtistId()%>><%=artist_name %></a></h2>
-						<h3 class="year-genre"><%=album.getReleaseYear() %> | <%=album.getGenre() %></h3>
-						<img class="album-card-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>
-						<div class="album-purchase">
-							<h3 class="inline">$<%=String.format("%.2f", album.getPrice()) %></h3>
-							<button type="button" class="button">Purchase</button>
+					<div class="album-details-card card">
+						<div class="left-div">
+							<img class="album-card-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>					
+						</div>
+						
+						<div class="right-div">
+							<h1><%=album.getTitle() %></h1>
+							<h2><a href=<%=base + "?action=showArtistDetails&artist_id=" + album.getArtistId()%>><%=artist_name %></a></h2>
+							<h3><%=album.getReleaseYear() %></h3>
+							<h3><%=album.getGenre() %></h3>
+							<div>
+								<h3 class="inline"><%=album.getPrice() %></h3>
+								<button type="button" class="button inline">Purchase</button>
+							</div>
 						</div>
 					</div>
 					
-					<!--  TO-DO: link back to artist page -->
+					<!--  TO-DO: link back to albums page -->
+					
 					
 					<!-- form to update album information -->
 					<div class="form">
