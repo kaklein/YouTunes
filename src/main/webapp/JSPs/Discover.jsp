@@ -26,69 +26,73 @@
 			
 			
 			<!-- Discover questionnaire form -->
-			<div class="form section">
-				<form action="" method="POST" id="discover-form">
-					<fieldset>
-						<legend>What kind of music do you like?</legend>
-						<p>Please select at least one genre and at least one decade.</p>
-						
-						<div class="form-field" id="genre-select">
-							<h3>Genre(s):</h3>
-							<%
-								// get sub genre options from database
-								List<String> subGenreList = albumDao.getSubGenres();
-								
-								// get previous checked options, if any
-								List<String> previousSelectedGenres;
-								if (request.getParameterValues("genre[]") != null) {
-									previousSelectedGenres = Arrays.asList(request.getParameterValues("genre[]"));
-								} else{
-									previousSelectedGenres = new ArrayList<>();
-								}
-								
-								for (String genre : subGenreList) {								
-							%>
-									<!-- create checkbox for each subgenre (if checked in previous submission, keep it checked) -->
+			<form action="" method="POST" id="discover-form">
+				<h2 class="center-text">What kind of music do you like?</h2>
+				<p class="form-instructions center-text">Please select at least one genre and at least one decade.</p>
+				
+				<div class="form-fields-container">
+					
+					<div class="discover-form-field inline align-top">
+						<h3 class="center-text">Genre(s):</h3>
+						<div class="checkbox-group">
+						<%
+							// get sub genre options from database
+							List<String> subGenreList = albumDao.getSubGenres();
+							
+							// get previous checked options, if any
+							List<String> previousSelectedGenres;
+							if (request.getParameterValues("genre[]") != null) {
+								previousSelectedGenres = Arrays.asList(request.getParameterValues("genre[]"));
+							} else{
+								previousSelectedGenres = new ArrayList<>();
+							}
+							
+							for (String genre : subGenreList) {								
+						%>
+								<!-- create checkbox for each subgenre (if checked in previous submission, keep it checked) -->
+								<div class="checkbox-pair block">
 									<input type="checkbox" name="genre[]" id=<%=genre %> value=<%=genre %>
 										<%if(previousSelectedGenres.contains(genre)){ %> checked <% } %>/>
 									<label for =<%=genre%>><%=genre %></label>			
-							<%
-								}
-							%>
+								</div>
+						<%
+							}
+						%>
 						</div>
-						
-						<div class="form-field" id="year-select">
-							<h3>Decades(s):</h3>
-							<%
-								// get decade options from database
-								List<String> yearsList = albumDao.getYears();
-								
-								// get previous checked options, if any
-								List<String> previousSelectedYears;
-								if (request.getParameterValues("year[]") != null) {
-									previousSelectedYears = Arrays.asList(request.getParameterValues("year[]"));
-								} else {
-									previousSelectedYears = new ArrayList<>();
-								}
+					</div>
+
+					<div class="discover-form-field inline align-top">
+						<h3 class="center-text">Decades(s):</h3>
+						<div class="checkbox-group">
+						<%
+							// get decade options from database
+							List<String> yearsList = albumDao.getYears();
 							
-								for (String yearBase : yearsList) {
-									String yearOption = yearBase + "0s";
-							%>
-									<!-- create checkbox for each decade (if checked in previous submission, keep it checked) -->
+							// get previous checked options, if any
+							List<String> previousSelectedYears;
+							if (request.getParameterValues("year[]") != null) {
+								previousSelectedYears = Arrays.asList(request.getParameterValues("year[]"));
+							} else {
+								previousSelectedYears = new ArrayList<>();
+							}
+						
+							for (String yearBase : yearsList) {
+								String yearOption = yearBase + "0s";
+						%>
+								<!-- create checkbox for each decade (if checked in previous submission, keep it checked) -->
+								<div class="checkbox-pair block">
 									<input type="checkbox" name="year[]" id=<%=yearBase %> value=<%= yearBase%>
 										<%if(previousSelectedYears.contains(yearBase)){ %> checked <%} %>/>
 									<label for=<%=yearBase %>><%=yearOption %></label>
-							<%	
-								}
-							%>
-						</div>		
-						
-						<div class="form-field">
-							<input type="submit" class="button" id="discover-submit-button" value="Get artist suggestions">
-						</div>		
-					</fieldset>
-				</form>
-			</div>
+								</div>
+						<%	
+							}
+						%>
+						</div>
+					</div>
+				</div>
+				<input type="submit" class="button submit-button" value="Get artist suggestions">
+			</form>
 			
 			<!-- Display questionnaire results on form submission -->
 			<% 
@@ -121,35 +125,23 @@
 								if (!artistSuggestionIds.isEmpty()) {
 						%>
 									<!-- display selections -->
-									<div class="section-header">
-										<table>
-											<tr>
-												<th rowspan="2">Because you selected:</th>
-												<th>Genres(s)</th>
-												<th>Decade(s)</th>
-											</tr>
-											<tr>
-												<td>
-												<%
-													String genresFormatted = selectedGenresList.get(0);
-													for (int i = 1; i < selectedGenresList.size(); i++) {
-														genresFormatted += ", " + selectedGenresList.get(i);
-													}		
-													out.print(genresFormatted);
-												%>
-												</td>
-												<td>
-												<%
-													String decadesFormatted = selectedYearsList.get(0) + "0s";
-													for (int i = 1; i < selectedYearsList.size(); i++) {
-														decadesFormatted += ", " + selectedYearsList.get(i) + "0s";
-													}
-													out.print(decadesFormatted);
-												%>
-												</td>
-											</tr>
-										
-										</table>
+									<div>
+										<h3 class="center-text">Because you selected</h3>
+										<p class="center-text">
+										<%
+											String genresFormatted = "";
+											for (String genre : selectedGenresList) {
+												genresFormatted += genre + ", ";
+											}		
+											out.print(genresFormatted);
+											
+											String decadesFormatted = selectedYearsList.get(0) + "0s";
+											for (int i = 1; i < selectedYearsList.size(); i++) {
+												decadesFormatted += ", " + selectedYearsList.get(i) + "0s";
+											}
+											out.print(decadesFormatted);
+										%>
+										</p>
 									</div>
 									
 									<!-- display suggestion header -->
@@ -171,12 +163,12 @@
 										suggestionsFormatted += name + "\n";
 								%>
 											<!-- display artist card for each suggestion -->
-											<div class="artist-card">
-												<form>
-													<img class="artist-card-img" src=<%= "Images/artists/" + currentArtist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %> width="100">
-													<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>><%=name %></a>				
-												</form>
-											</div>								
+											<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>>
+											<div class="artist-card card">
+												<h2><%=name %></h2>			
+												<img class="small-img" src=<%= "Images/artists/" + currentArtist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %> width="100">
+											</div>					
+											</a>			
 								<%
 									} // end artist suggestion loop
 									
@@ -191,7 +183,7 @@
 								%>
 									<!-- form to email results -->
 									<form>
-										<a href=<%=href %> target="_blank">Email my results</a>
+										<a href=<%=href %> target="_blank" class="button">Email my results</a>
 									</form>
 								<%
 								} else { // else if artistSuggestionIds IS empty
@@ -201,12 +193,14 @@
 											<h2>Sorry, we couldn't find any suggestions for you.</h2>
 											<h3>Please make new selections and we'll try again.</h3>
 										</div>
-								<%	
+						<%	
 								} // end of else
 							} // end if selected lists not empty
-							%>
+						%>
 				</div>
-			<% } //end doPost%>
+			<% 
+				} //end doPost			
+			%>
 		</div>
 	
 		<!-- include footer  -->

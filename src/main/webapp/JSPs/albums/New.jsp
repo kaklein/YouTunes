@@ -25,49 +25,61 @@
 			
 			<!-- form to add a new album to the database -->
 			<form>
-				<h3>Add a new album</h3>
+				<h2>Add a new album</h2>
 			
 				<input type="hidden" name="action" value="addAlbum">
 				
-				<label for="title">Album title:</label>
-				<input type="text" id="title" name="title">
+				<div class="form-field">
+					<label for="title" class="inline">Album title:</label>
+					<input type="text" class="inline" id="title" name="title">
+				</div>
 				
-				<label for="artist_id">Artist:</label>
-				<select id="artist_id" name="artist_id">
-					<%
-						// populate select options with artists from database
-						List<Artist> artistOptions = artistDao.list();
-						for (Artist artist : artistOptions) {
-					%>
-							<option value="<%=artist.getId() %>"><%=artist.getFirstName() + " " + artist.getLastName() %></option>
-					<%
-						} // end artist option loop
-					%>
-				</select>
+				<div class="form-field">
+					<label for="artist_id" class="inline">Artist:</label>
+					<select class="inline" id="artist_id" name="artist_id">
+						<%
+							// populate select options with artists from database
+							List<Artist> artistOptions = artistDao.list();
+							for (Artist artist : artistOptions) {
+						%>
+								<option value="<%=artist.getId() %>"><%=artist.getFirstName() + " " + artist.getLastName() %></option>
+						<%
+							} // end artist option loop
+						%>
+					</select>
+				</div>
 				
-				<label for="release_year">Release year:</label>
-				<input type="text" id="release_year" name="release_year">
+				<div class="form-field">
+					<label for="release_year" class="inline">Release year:</label>
+					<input type="text" class="inline" id="release_year" name="release_year">
+				</div>
 				
-				<label for="genre">Genre:</label>
-				<select id="genre" name="genre">
-					<%
-						// populate select options with genres from database
-						List<String> genreList = albumDao.getGenres();
-						for (String genre : genreList) {
-					%>
-							<option value="<%=genre %>"><%=genre %></option>
-					<%
-						} // end genre option loop
-					%>
-				</select>
+				<div class="form-field">
+					<label for="genre" class="inline">Genre:</label>
+					<select id="genre" class="inline" name="genre">
+						<%
+							// populate select options with genres from database
+							List<String> genreList = albumDao.getGenres();
+							for (String genre : genreList) {
+						%>
+								<option value="<%=genre %>"><%=genre %></option>
+						<%
+							} // end genre option loop
+						%>
+					</select>
+				</div>
 				
-				<label for="price">Price:</label>
-				<input type="text" id="price" name="price">
+				<div class="form-field">
+					<label for="price" class="inline">Price:</label>
+					<input type="text" class="inline" id="price" name="price">
+				</div>
 				
-				<label for="img_url">Image URL:</label>
-				<input type="text" id="img_url" name="img_url">
+				<div class="form-field">
+					<label for="img_url" class="inline">Image URL:</label>
+					<input type="text" class="inline" id="img_url" name="img_url">
+				</div>
 				
-				<input type="submit" class="button" value="Add album"/>		
+				<input type="submit" class="button submit-button" value="Add album"/>		
 			</form>
 			
 		</div>

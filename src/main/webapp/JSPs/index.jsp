@@ -23,7 +23,9 @@
 			<jsp:include page="TopNav.jsp" flush="true"/>
 			
 			<!-- Add album button -->
-			<a href=<%= base + "?action=goToNewAlbum"%> class="button">Add a new album</a>			
+			<div class="center-text">
+				<a href=<%= base + "?action=goToNewAlbum"%> class="button">Add a new album</a>
+			</div>
 			
 			<!-- Album display -->
 			<%

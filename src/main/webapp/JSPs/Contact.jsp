@@ -20,17 +20,22 @@
 			<!-- include top nav menu -->
 			<jsp:include page="//JSPs/TopNav.jsp" flush="true"/>
 			
-			<div class="content=card">
-				<h1>Contact</h1>
-				<address>
+			<h1 class="center-text">Contact</h1>
+			
+			<div class="address center-text gray-background">
+				<div class="content-card inline">
 					<h3>Address</h3>
 					1500 Music Road<br>
 					Cityville, NE 68111<br>
+				</div>
+			
+				<div class="content-card inline">
 					<h3>Get in touch</h3>
 					<a href="mailto:support@youtunes.com" target="_blank">support@youtunes.com</a><br>
 					1-800-555-5555
-				</address>
-			</div>	
+				</div>	
+			</div>
+			
 		</div>
 		
 		<!-- include footer  -->

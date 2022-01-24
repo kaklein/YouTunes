@@ -39,11 +39,11 @@
 			%>
 					<!-- display album details -->
 					<div class="album-details-card card">
-						<div class="left-div">
+						<div class="inline align-top">
 							<img class="album-card-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>					
 						</div>
 						
-						<div class="right-div">
+						<div class="inline align-top">
 							<h1><%=album.getTitle() %></h1>
 							<h2><a href=<%=base + "?action=showArtistDetails&artist_id=" + album.getArtistId()%>><%=artist_name %></a></h2>
 							<h3><%=album.getReleaseYear() %></h3>
@@ -59,60 +59,78 @@
 					
 					
 					<!-- form to update album information -->
-					<div class="form">
-						<form>
-							<h3>Update Album</h3>
+					<form>
+						<h2 class="center-text">Edit Album</h2>
+						
+						<input type="hidden" name="action" value="updateAlbum">
+						<input type="hidden" name="album_id" value="<%=album.getAlbumId() %>">
+						
+						<table>
 							
-							<input type="hidden" name="action" value="updateAlbum">
-							<input type="hidden" name="album_id" value="<%=album.getAlbumId() %>">
+							<tr class="form-field">
+								<td><label for="title" class="inline">Title:</label></td>
+								<td><input type="text" class="inline" id="title" name="title" value="<%=album.getTitle() %>"></td>
+							</tr>
 							
-							<label for="title">Title:</label>
-							<input type="text" id="title" name="title" value="<%=album.getTitle() %>">
+							<tr class="form-field">
+								<td><label for="artist_id" class="inline">Artist:</label></td>
+								<td>
+									<select class="inline" id="artist_id" name="artist_id">
+									<%
+										// populate select options with artists from database
+										List<Artist> artistOptions = artistDao.list();
+										for (Artist artist : artistOptions) {
+									%>
+											<option value="<%=artist.getId() %>" <%if (artist.getId() == album.getArtistId()) {%> selected <%} %>><%=artist.getFirstName() + " " + artist.getLastName() %></option>
+									<%
+										} // end artist option loop
+									%>
+									</select>
+								</td>
+							</tr>
 							
-							<label for="artist_id">Artist:</label>
-							<select id="artist_id" name="artist_id">
-								<%
-									// populate select options with artists from database
-									List<Artist> artistOptions = artistDao.list();
-									for (Artist artist : artistOptions) {
-								%>
-										<option value="<%=artist.getId() %>" <%if (artist.getId() == album.getArtistId()) {%> selected <%} %>><%=artist.getFirstName() + " " + artist.getLastName() %></option>
-								<%
-									} // end artist option loop
-								%>
-							</select>
+							<tr class="form-field">
+								<td><label for="release_year" class="inline">Release year:</label></td>
+								<td><input type="number" class="inline" id="release_year" name="release_year" value="<%=album.getReleaseYear() %>"></td>
+							</tr>
 							
-							<label for="release_year">Release year:</label>
-							<input type="number" id="release_year" name="release_year" value="<%=album.getReleaseYear() %>">
+							<tr class="form-field">
+								<td><label for="genre" class="inline">Genre:</label></td>
+								<td>
+									<select class="inline" id="genre" name="genre">
+										<%
+											// populate select options with genres from database
+											List<String> genreList = albumDao.getGenres();
+											for (String genre : genreList) {
+										%>
+												<option value="<%=genre %>" <% if (album.getGenre().equals(genre)) {%> selected <% } %>><%=genre %></option>
+										<%
+											} // end genre option loop
+										%>
+									</select>
+								</td>
+							</tr>
 							
-							<label for="genre">Genre:</label>
-							<select id="genre" name="genre">
-								<%
-									// populate select options with genres from database
-									List<String> genreList = albumDao.getGenres();
-									for (String genre : genreList) {
-								%>
-										<option value="<%=genre %>" <% if (album.getGenre().equals(genre)) {%> selected <% } %>><%=genre %></option>
-								<%
-									} // end genre option loop
-								%>
-							</select>
+							<tr class="form-field">
+								<td><label for="price" class="inline">Price:</label></td>
+								<td><input type="text" class="inline" id="price" name="price" value="<%=album.getPrice() %>"></td>
+							</tr>
 							
-							<label for="price">Price:</label>
-							<input type="text" id="price" name="price" value="<%=album.getPrice() %>">
-							
-							<label for="img_url">Image URL:</label>
-							<input type="text" id="img_url" name="img_url" value="<%=album.getImgUrl() %>">
-													
-							<input type="submit" class="button" value="Update album">
-						</form>
-					</div>
+							<tr class="form-field">
+								<td><label for="img_url" class="inline">Image URL:</label></td>
+								<td><input type="text" class="inline" id="img_url" name="img_url" value="<%=album.getImgUrl() %>"></td>
+							</tr>
+					
+						</table>
+												
+						<input type="submit" class="button submit-button" value="Save changes">
+					</form>
 					
 					<!-- delete button -->
 					<form>
 						<input type="hidden" name="action" value="removeAlbum">
 						<input type="hidden" name="album_id" value="<%=album_id %>">
-						<input type="submit" class="button important-button" value="Delete album from database">
+						<input type="submit" class="button important-button" value="Delete album">
 					</form>
 					
 			<%										

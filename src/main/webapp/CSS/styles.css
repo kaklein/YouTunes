@@ -1,5 +1,6 @@
 :root {
   --background-color: #252525;
+  --lighter-background-color: #414041;
   --main-text-color: #4EF3D2;
   --highlight-text-color: #FFE373;
 }
@@ -56,9 +57,25 @@ a:hover {
 	margin: auto;
 }
 
+.important-button {
+	background-color: #da4c48;
+	color: white;
+	margin: 10px;
+	margin-top: 25px;
+}
+
 .button:hover {
 	background-color: var(--highlight-text-color);
 	cursor: pointer;
+}
+
+.important-button:hover {
+	background-color: #da7069;
+}
+
+.submit-button {
+	width: 100%;
+	margin: auto;
 }
 
 .card {
@@ -67,7 +84,10 @@ a:hover {
 	margin: 10px;
 	height: fit-content;
 	width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
 }
+
 
 .small-img {
 	width: 200px;
@@ -90,15 +110,74 @@ a:hover {
 }
 
 .inline {
-	display: inline;
-}
-
-.form-field {
+	display: inline-block;
 	margin: 10px;
 }
 
+.block {
+	display: block;
+}
+
+.center-text {
+	text-align: center;
+}
+
+form {
+	margin: auto;
+	margin-top: 30px;
+	border: 1px solid blue;
+	width: fit-content;
+}
+
+.form-field {
+	padding: 0;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 100%;
+	align-items: center;
+}
+
+#discover-form {
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.discover-form-field {
+	padding: 0;
+	width: fit-content;
+	margin-right: 25px;
+	margin-left: 25px;
+	margin-bottom: 25px;
+}
+
+.form-fields-container {
+	width: fit-content;
+	margin: auto;
+}
+
 .form-field label {
-	vertical-align: top;
+	width: 90%;
+	text-align: right;
+}
+
+.form-field input, .form-field select {	
+	width: 80%;
+}
+
+.align-top {
+	vertical-align: text-top;
+}
+
+.checkbox-group {
+	width: fit-content;
+}
+
+h3{
+	width: 100%;
+}
+
+.checkbox-pair {
+	width: fit-content;
 }
 
 .section {
@@ -106,17 +185,30 @@ a:hover {
 	margin-top: 30px;
 }
 
-.form {
-	width: fit-content;
-}
-
 #results {
 	text-align: center;
 	width: fit-content;
 }
 
+.content-card {
+	margin: 25px;
+}
+
+.sub-section {
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.gray-background{
+	background-color: var(--lighter-background-color);
+}
+
 footer {
-	background-color: #3a3a3b;
+	background-color: var(--lighter-background-color);
 	padding: 35px;
 	position: absolute;
 	bottom: 0;

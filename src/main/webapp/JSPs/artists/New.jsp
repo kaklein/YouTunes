@@ -21,21 +21,27 @@
 			
 			<!-- form to add a new artist to the database -->
 			<form>
-				<h3>Add a new artist</h3>
-				<p>For artists with only one name, or band names, leave the 'Last name' field blank</p>
+				<h2>Add a new artist</h2>
+				<p class="form-instructions">For artists with only one name, or band names, leave the 'Last name' field blank</p>
 			
 				<input type="hidden" name="action" value="addArtist">
 				
-				<label for="first_name">First name:</label>
-				<input type="text" id="first_name" name="first_name" placeholder="John"/>
+				<div class="form-field">
+					<label for="first_name" class="inline">First name:</label>
+					<input type="text" class="inline" id="first_name" name="first_name" placeholder="John"/>
+				</div>
 				
-				<label for="last_name">Last name:</label>
-				<input type="text" id="last_name" name="last_name" placeholder="Lennon"/>
+				<div class="form-field">
+					<label for="last_name" class="inline">Last name:</label>
+					<input type="text" class="inline" id="last_name" name="last_name" placeholder="Lennon"/>
+				</div>
 				
-				<label for="img_url">Image URL:</label>
-				<input type="text" id="img_url" name="img_url">
+				<div class="form-field">
+					<label for="img_url" class="inline">Image URL:</label>
+					<input type="text" class="inline" id="img_url" name="img_url">
+				</div>
 				
-				<input type="submit" class="button" value="Add artist"/>		
+				<input type="submit" class="button submit-button" value="Add artist"/>		
 			</form>
 			
 		</div>

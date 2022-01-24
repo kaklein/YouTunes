@@ -56,13 +56,13 @@
 						String album_id = String.valueOf(album.getAlbumId()); // get album Id					
 			%>
 						<!-- display album card -->
-						<a href=<%=base + "?action=showAlbumDetails&album_id=" + album_id + "&artist_name=" + name%>>
+						<a class="block" href=<%=base + "?action=showAlbumDetails&album_id=" + album_id + "&artist_name=" + name%>>
 							<div class="album-card card">
-								<div class="left-div">
+								<div class="inline align-top">
 									<img class="small-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>				
 								</div>
 								
-								<div class="right-div">
+								<div class="inline align-top">
 									<h1><%=album.getTitle() %></h1>
 									<h2><%=album.getReleaseYear() %></h2>
 								</div>
@@ -74,27 +74,33 @@
 		
 					<!-- form to update Artist details -->
 					<form>
-						<h3>Update Artist</h3>
+						<h2 class="center-text">Edit Artist</h2>
 						<input type="hidden" name="action" value="updateArtist"/>
 						<input type="hidden" id="artist_id" name="artist_id" value="<%=artist_id_param%>"/>
 						
-						<label for="first_name">First name:</label>
-						<input type="text" id="first_name" name="first_name" value="<%=artist.getFirstName() %>"/>
+						<table>
+							<tr class="form-field">
+								<td><label for="first_name" class="inline">First name:</label></td>
+								<td><input type="text" class="inline" id="first_name" name="first_name" value="<%=artist.getFirstName() %>"/></td>
+							</tr>
+							<tr class="form-field">
+								<td><label for="last_name" class="inline">Last name:</label></td>
+								<td><input type="text" class="inline" id="last_name" name="last_name" value="<%=artist.getLastName() %>"/></td>
+							</tr>
+							<tr class="form-field">
+								<td><label for="img_url" class="inline">Image URL:</label></td>
+								<td><input type="text" class="inline" id="img_url" name="img_url" value="<%=artist.getImgUrl() %>"></td>
+							</tr>
+						</table>
 						
-						<label for="last_name">Last name:</label>
-						<input type="text" id="last_name" name="last_name" value="<%=artist.getLastName() %>"/>
-						
-						<label for="img_url">Image URL:</label>
-						<input type="text" id="img_url" name="img_url" value="<%=artist.getImgUrl() %>">
-						
-						<input type="submit" class="button" value="Update artist"/>
+						<input type="submit" class="button submit-button" value="Save changes"/>
 					</form>
 					
 					<!-- delete button -->
 					<form>
 						<input type="hidden" name="action" value="removeArtist">
 						<input type="hidden" name="artist_id" value="<%=artist_id %>">
-						<input type="submit" class="button important-button" value="Delete artist from database">
+						<input type="submit" class="button important-button" value="Delete artist">
 					</form>
 			<%					
 				

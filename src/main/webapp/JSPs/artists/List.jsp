@@ -22,7 +22,9 @@
 			<jsp:include page="//JSPs/TopNav.jsp" flush="true"/>
 			
 			<!-- Add artist button -->
-			<a href=<%= base + "?action=goToNewArtist"%> class="button">Add a new artist</a>
+			<div class="center-text">
+				<a href=<%= base + "?action=goToNewArtist"%> class="button">Add a new artist</a>
+			</div>		
 			
 			<!-- display list of artists -->
 			<%		
