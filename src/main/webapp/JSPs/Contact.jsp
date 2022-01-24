@@ -23,16 +23,16 @@
 			<h1 class="center-text">Contact</h1>
 			
 			<div class="address center-text gray-background">
-				<div class="content-card inline">
-					<h3>Address</h3>
-					1500 Music Road<br>
-					Cityville, NE 68111<br>
+				<div class="content-card inline-block">
+					<h2>Address</h2>
+					<p>1500 Music Road</p>
+					<p>Cityville, NE 68111</p>
 				</div>
 			
-				<div class="content-card inline">
-					<h3>Get in touch</h3>
-					<a href="mailto:support@youtunes.com" target="_blank">support@youtunes.com</a><br>
-					1-800-555-5555
+				<div class="content-card inline-block address-content">
+					<h2>Get in touch</h2>
+					<p><a href="mailto:support@youtunes.com" target="_blank">support@youtunes.com</a></p>
+					<p>1-800-555-5555</p>
 				</div>	
 			</div>
 			

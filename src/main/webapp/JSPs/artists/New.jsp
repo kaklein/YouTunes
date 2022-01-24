@@ -29,18 +29,18 @@
 				<table>
 					
 					<tr class="form-field">
-						<td><label for="first_name" class="inline">First name:</label></td>
-						<td><input type="text" class="inline" id="first_name" name="first_name" placeholder="John"/></td>
+						<td><label for="first_name" class="inline-block">First name:</label></td>
+						<td><input type="text" class="inline-block" id="first_name" name="first_name" placeholder="John"/></td>
 					</tr>
 					
 					<tr class="form-field">
-						<td><label for="last_name" class="inline">Last name:</label></td>
-						<td><input type="text" class="inline" id="last_name" name="last_name" placeholder="Lennon"/></td>
+						<td><label for="last_name" class="inline-block">Last name:</label></td>
+						<td><input type="text" class="inline-block" id="last_name" name="last_name" placeholder="Lennon"/></td>
 					</tr>
 					
 					<tr class="form-field">
-						<td><label for="img_url" class="inline">Image URL:</label></td>
-						<td><input type="text" class="inline" id="img_url" name="img_url"></td>
+						<td><label for="img_url" class="inline-block">Image URL:</label></td>
+						<td><input type="text" class="inline-block" id="img_url" name="img_url"></td>
 					</tr>
 
 					

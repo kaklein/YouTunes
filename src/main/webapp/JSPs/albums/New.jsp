@@ -32,14 +32,14 @@
 				<table>
 				
 					<tr class="form-field">
-						<td><label for="title" class="inline">Album title:</label></td>
-						<td><input type="text" class="inline" id="title" name="title"></td>
+						<td><label for="title" class="inline-block">Album title:</label></td>
+						<td><input type="text" class="inline-block" id="title" name="title"></td>
 					</tr>
 					
 					<tr class="form-field">
-						<td><label for="artist_id" class="inline">Artist:</label></td>
+						<td><label for="artist_id" class="inline-block">Artist:</label></td>
 						<td>
-							<select class="inline" id="artist_id" name="artist_id">
+							<select class="inline-block" id="artist_id" name="artist_id">
 								<%
 									// populate select options with artists from database
 									List<Artist> artistOptions = artistDao.list();
@@ -54,14 +54,14 @@
 					</tr>
 					
 					<tr class="form-field">
-						<td><label for="release_year" class="inline">Release year:</label></td>
-						<td><input type="text" class="inline" id="release_year" name="release_year"></td>
+						<td><label for="release_year" class="inline-block">Release year:</label></td>
+						<td><input type="text" class="inline-block" id="release_year" name="release_year"></td>
 					</tr>
 					
 					<tr class="form-field">
-						<td><label for="genre" class="inline">Genre:</label></td>
+						<td><label for="genre" class="inline-block">Genre:</label></td>
 						<td>
-							<select id="genre" class="inline" name="genre">
+							<select id="genre" class="inline-block" name="genre">
 								<%
 									// populate select options with genres from database
 									List<String> genreList = albumDao.getGenres();
@@ -76,13 +76,13 @@
 					</tr>
 					
 					<tr class="form-field">
-						<td><label for="price" class="inline">Price:</label></td>
-						<td><input type="text" class="inline" id="price" name="price"></td>
+						<td><label for="price" class="inline-block">Price:</label></td>
+						<td><input type="text" class="inline-block" id="price" name="price"></td>
 					</tr>
 					
 					<tr class="form-field">
-						<td><label for="img_url" class="inline">Image URL:</label></td>
-						<td><input type="text" class="inline" id="img_url" name="img_url"></td>
+						<td><label for="img_url" class="inline-block">Image URL:</label></td>
+						<td><input type="text" class="inline-block" id="img_url" name="img_url"></td>
 					</tr>
 				
 				</table>

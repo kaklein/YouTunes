@@ -43,65 +43,68 @@
 			%>
 					<!-- display artist details -->
 					<div class="artist-card card">
-						<h1><%=name %></h1>
+						<h1 class="center-text"><%=name %></h1>
 						<img class="large-img" src=<%= "Images/artists/" + artist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>
 					</div>
-			<%					
-					// get list of artist's albums from database
-					JdbcAlbumDao albumDao = new JdbcAlbumDao();
-					List<Album> albumList = albumDao.findByArtistId(artist_id);
 					
-					// iterate through list of albums and create an album card for each one
-					for (Album album : albumList) {
-						String album_id = String.valueOf(album.getAlbumId()); // get album Id					
-			%>
-						<!-- display album card -->
-						<a class="block" href=<%=base + "?action=showAlbumDetails&album_id=" + album_id + "&artist_name=" + name%>>
-							<div class="album-card card">
-								<div class="inline align-top">
-									<img class="small-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>				
-								</div>
-								
-								<div class="inline align-top">
-									<h1><%=album.getTitle() %></h1>
-									<h2><%=album.getReleaseYear() %></h2>
-								</div>
+					<!-- display artists' albums -->
+					<h2 class="center-text">Albums</h2>
+			
+			<div class="small-grid-container">
+				<%					
+						// get list of artist's albums from database
+						JdbcAlbumDao albumDao = new JdbcAlbumDao();
+						List<Album> albumList = albumDao.findByArtistId(artist_id);
+						
+						// iterate through list of albums and create an album card for each one
+						for (Album album : albumList) {
+							String album_id = String.valueOf(album.getAlbumId()); // get album Id					
+				%>
+							<!-- display album card -->
+							<div class="small-album-card card gray-background">
+								<a class="block" href=<%=base + "?action=showAlbumDetails&album_id=" + album_id + "&artist_name=" + name%>>						
+									<div class="card-content">
+										<h1><%=album.getTitle() %></h1>
+										<h2 class="no-link-styling"><%=album.getReleaseYear() %></h2>
+										<img class="small-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>				
+									</div>
+								</a>
 							</div>
-						</a>
-			<%
-					} // end album for loop
-			%>
-		
-					<!-- form to update Artist details -->
-					<form>
-						<h2 class="center-text">Edit Artist</h2>
-						<input type="hidden" name="action" value="updateArtist"/>
-						<input type="hidden" id="artist_id" name="artist_id" value="<%=artist_id_param%>"/>
-						
-						<table>
-							<tr class="form-field">
-								<td><label for="first_name" class="inline">First name:</label></td>
-								<td><input type="text" class="inline" id="first_name" name="first_name" value="<%=artist.getFirstName() %>"/></td>
-							</tr>
-							<tr class="form-field">
-								<td><label for="last_name" class="inline">Last name:</label></td>
-								<td><input type="text" class="inline" id="last_name" name="last_name" value="<%=artist.getLastName() %>"/></td>
-							</tr>
-							<tr class="form-field">
-								<td><label for="img_url" class="inline">Image URL:</label></td>
-								<td><input type="text" class="inline" id="img_url" name="img_url" value="<%=artist.getImgUrl() %>"></td>
-							</tr>
-						</table>
-						
-						<input type="submit" class="button submit-button" value="Save changes"/>
-					</form>
+				<%
+						} // end album for loop
+				%>
+				</div>
+				
+				<!-- form to update Artist details -->
+				<form class="border">
+					<h2 class="center-text">Edit Artist</h2>
+					<input type="hidden" name="action" value="updateArtist"/>
+					<input type="hidden" id="artist_id" name="artist_id" value="<%=artist_id_param%>"/>
 					
-					<!-- delete button -->
-					<form>
-						<input type="hidden" name="action" value="removeArtist">
-						<input type="hidden" name="artist_id" value="<%=artist_id %>">
-						<input type="submit" class="button important-button" value="Delete artist">
-					</form>
+					<table>
+						<tr class="form-field">
+							<td><label for="first_name" class="inline-block">First name:</label></td>
+							<td><input type="text" class="inline-block" id="first_name" name="first_name" value="<%=artist.getFirstName() %>"/></td>
+						</tr>
+						<tr class="form-field">
+							<td><label for="last_name" class="inline-block">Last name:</label></td>
+							<td><input type="text" class="inline-block" id="last_name" name="last_name" value="<%=artist.getLastName() %>"/></td>
+						</tr>
+						<tr class="form-field">
+							<td><label for="img_url" class="inline-block">Image URL:</label></td>
+							<td><input type="text" class="inline-block" id="img_url" name="img_url" value="<%=artist.getImgUrl() %>"></td>
+						</tr>
+					</table>
+					
+					<input type="submit" class="button submit-button" value="Save changes"/>
+				</form>
+				
+				<!-- delete button -->
+				<form>
+					<input type="hidden" name="action" value="removeArtist">
+					<input type="hidden" name="artist_id" value="<%=artist_id %>">
+					<input type="submit" class="button important-button" value="Delete artist">
+				</form>
 			<%					
 				
 				} else {

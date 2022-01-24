@@ -39,11 +39,11 @@
 			%>
 					<!-- display album details -->
 					<div class="album-details-card card">
-						<div class="inline align-top">
+						<div class="inline-block align-top">
 							<img class="album-card-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>					
 						</div>
 						
-						<div class="inline align-top">
+						<div class="inline-block align-top">
 							<h1><%=album.getTitle() %></h1>
 							<h2><a href=<%=base + "?action=showArtistDetails&artist_id=" + album.getArtistId()%>><%=artist_name %></a></h2>
 							<h3><%=album.getReleaseYear() %></h3>
@@ -59,7 +59,7 @@
 					
 					
 					<!-- form to update album information -->
-					<form>
+					<form class="border">
 						<h2 class="center-text">Edit Album</h2>
 						
 						<input type="hidden" name="action" value="updateAlbum">
@@ -68,14 +68,14 @@
 						<table>
 							
 							<tr class="form-field">
-								<td><label for="title" class="inline">Title:</label></td>
-								<td><input type="text" class="inline" id="title" name="title" value="<%=album.getTitle() %>"></td>
+								<td><label for="title" class="inline-block">Title:</label></td>
+								<td><input type="text" class="inline-block" id="title" name="title" value="<%=album.getTitle() %>"></td>
 							</tr>
 							
 							<tr class="form-field">
-								<td><label for="artist_id" class="inline">Artist:</label></td>
+								<td><label for="artist_id" class="inline-block">Artist:</label></td>
 								<td>
-									<select class="inline" id="artist_id" name="artist_id">
+									<select class="inline-block" id="artist_id" name="artist_id">
 									<%
 										// populate select options with artists from database
 										List<Artist> artistOptions = artistDao.list();
@@ -90,14 +90,14 @@
 							</tr>
 							
 							<tr class="form-field">
-								<td><label for="release_year" class="inline">Release year:</label></td>
-								<td><input type="number" class="inline" id="release_year" name="release_year" value="<%=album.getReleaseYear() %>"></td>
+								<td><label for="release_year" class="inline-block">Release year:</label></td>
+								<td><input type="number" class="inline-block" id="release_year" name="release_year" value="<%=album.getReleaseYear() %>"></td>
 							</tr>
 							
 							<tr class="form-field">
-								<td><label for="genre" class="inline">Genre:</label></td>
+								<td><label for="genre" class="inline-block">Genre:</label></td>
 								<td>
-									<select class="inline" id="genre" name="genre">
+									<select class="inline-block" id="genre" name="genre">
 										<%
 											// populate select options with genres from database
 											List<String> genreList = albumDao.getGenres();
@@ -112,15 +112,15 @@
 							</tr>
 							
 							<tr class="form-field">
-								<td><label for="price" class="inline">Price:</label></td>
-								<td><input type="text" class="inline" id="price" name="price" value="<%=album.getPrice() %>"></td>
+								<td><label for="price" class="inline-block">Price:</label></td>
+								<td><input type="text" class="inline-block" id="price" name="price" value="<%=album.getPrice() %>"></td>
 							</tr>
 							
 							<tr class="form-field">
-								<td><label for="img_url" class="inline">Image URL:</label></td>
-								<td><input type="text" class="inline" id="img_url" name="img_url" value="<%=album.getImgUrl() %>"></td>
+								<td><label for="img_url" class="inline-block">Image URL:</label></td>
+								<td><input type="text" class="inline-block" id="img_url" name="img_url" value="<%=album.getImgUrl() %>"></td>
 							</tr>
-					
+						
 						</table>
 												
 						<input type="submit" class="button submit-button" value="Save changes">

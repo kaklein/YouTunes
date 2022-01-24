@@ -22,36 +22,39 @@
 			<!-- include top nav menu -->
 			<jsp:include page="TopNav.jsp" flush="true"/>
 			
+			<h1 class="center-text">Albums</h1>
+			
 			<!-- Add album button -->
 			<div class="center-text">
 				<a href=<%= base + "?action=goToNewAlbum"%> class="button">Add a new album</a>
 			</div>
 			
-			<!-- Album display -->
-			<%
-				List<Album> albumList = albumDao.list();
-
-				// iterate through list of artists and create an artist card for each one
-				for (Album album : albumList) {	
-					// get artist name
-					String artist_name = albumDao.getArtistName(Long.valueOf(album.getAlbumId()));			
-			%>
-					<!-- display album card, which links to album details-->
-					<a href=<%=base + "?action=showAlbumDetails&album_id=" + album.getAlbumId()%>>
-					<div class="album-card card">				
-						<!-- album title -->
-						<h1><%=album.getTitle() %></h1>
+			
+			<div class="grid-container">
+				<!-- Album display -->
+				<%
+					List<Album> albumList = albumDao.list();
+	
+					// iterate through list of artists and create an artist card for each one
+					for (Album album : albumList) {	
+						// get artist name
+						String artist_name = albumDao.getArtistName(Long.valueOf(album.getAlbumId()));			
+				%>
+						<!-- display album card, which links to album details-->
 						
-						<!-- album cover image -->
-						<img class="small-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>
-						
-						<!-- artist name -->
-						<h2><%=artist_name %></h2>
-					</div>
-					</a>
-			<%
-				} // end album loop
-			%>
+						<div class="album-card card small-album-card gray-background">		
+							<a href=<%=base + "?action=showAlbumDetails&album_id=" + album.getAlbumId()%>>
+							<div class="card-content">	
+								<h1><%=album.getTitle() %></h1>	
+								<h2 class="no-link-styling"><%=artist_name %></h2>						
+								<img class="small-img" src=<%= "Images/albums/" + album.getImgUrl() + ".jpeg"%> alt=<%=album.getTitle() + " cover art" %>>
+							</div>
+							</a>
+						</div>
+				<%
+					} // end album loop
+				%>
+			</div>
 	
 		</div>
 		

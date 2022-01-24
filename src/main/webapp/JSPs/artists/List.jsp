@@ -21,34 +21,41 @@
 			<!-- include top nav menu -->
 			<jsp:include page="//JSPs/TopNav.jsp" flush="true"/>
 			
+			<h1 class="center-text">Artists</h1>
+			
 			<!-- Add artist button -->
 			<div class="center-text">
 				<a href=<%= base + "?action=goToNewArtist"%> class="button">Add a new artist</a>
 			</div>		
 			
-			<!-- display list of artists -->
-			<%		
-				// get list of all artists
-				List<Artist> artistList = artistDao.list();
+			<div class="grid-container">
+				<!-- display list of artists -->
+				<%		
+					// get list of all artists
+					List<Artist> artistList = artistDao.list();
+							
+					// iterate through list of artists and create an artist card for each one
+					for (Artist artist : artistList) {	
+						String id = String.valueOf(artist.getId()); // get artist Id
 						
-				// iterate through list of artists and create an artist card for each one
-				for (Artist artist : artistList) {	
-					String id = String.valueOf(artist.getId()); // get artist Id
+						String name = artist.getFirstName(); // get artist name
+						if (artist.getLastName() != null) { // (only include last name if not null)
+							name += " " + artist.getLastName();
+						}
+				%>
 					
-					String name = artist.getFirstName(); // get artist name
-					if (artist.getLastName() != null) { // (only include last name if not null)
-						name += " " + artist.getLastName();
-					}
-			%>
-				<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>>
-					<div class="artist-card card">
-						<h1><%=name %></h1>
-						<img class="small-img" src=<%= "Images/artists/" + artist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>		
-					</div>
-				</a>
-			<%
-				}				
-			%>
+						<div class="card small-artist-card gray-background">
+							<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>>
+							<div class="card-content">
+								<h1><%=name %></h1>
+								<img class="small-img" src=<%= "Images/artists/" + artist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>		
+							</div>
+							</a>
+						</div>
+				<%
+					}				
+				%>
+			</div>
 			
 		</div>
 		

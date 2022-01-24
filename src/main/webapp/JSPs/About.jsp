@@ -22,7 +22,7 @@
 			
 			<div class="content-card">
 				<h1 class="center-text">About</h1>
-				<p class="center-text">YouTunes is the new big thing in music.</p>
+				<p class="center-text yellow">YouTunes is the new big thing in music.</p>
 				<p class="center-text">
 					Browse, discover, download, and stream from our wide selection of albums.
 					We are proud to have an artist-owned purchasing model, so you know you're
@@ -42,7 +42,7 @@
 				</div>
 				<div class="sub-section gray-background">
 					<h3>Stay in the loop</h3>
-					<p>Check out our News & Announcements regularly and subscribe to our custom newsletters so
+					<p>Check out our news and announcements regularly and subscribe to our custom newsletters so
 					you don't miss out on what's happening in the world of your favorite artists.</p>
 				</div>
 

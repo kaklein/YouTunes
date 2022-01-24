@@ -24,15 +24,16 @@
 			<!-- include top nav menu -->
 			<jsp:include page="TopNav.jsp" flush="true"/>
 			
+			<h1 class="center-text">Discover</h1>
 			
 			<!-- Discover questionnaire form -->
-			<form action="" method="POST" id="discover-form">
-				<h2 class="center-text">What kind of music do you like?</h2>
+			<form action="" method="POST" id="discover-form" class="gray-background">
+				<h2 class="center-text yellow">What kind of music do you like?</h2>
 				<p class="form-instructions center-text">Please select at least one genre and at least one decade.</p>
 				
 				<div class="form-fields-container">
 					
-					<div class="discover-form-field inline align-top">
+					<div class="discover-form-field inline-block align-top">
 						<h3 class="center-text">Genre(s):</h3>
 						<div class="checkbox-group">
 						<%
@@ -61,7 +62,7 @@
 						</div>
 					</div>
 
-					<div class="discover-form-field inline align-top">
+					<div class="discover-form-field inline-block align-top">
 						<h3 class="center-text">Decades(s):</h3>
 						<div class="checkbox-group">
 						<%
@@ -146,32 +147,38 @@
 									
 									<!-- display suggestion header -->
 									<div class="section-header">
-										<h2>We think you'll like:</h2>
+										<h2 class="yellow">We think you'll like:</h2>
 									</div>
-								<%	
-									// iterate through list of artist ids and get artist objects
-									String suggestionsFormatted = "";
-									for (int artist_id : artistSuggestionIds) {
-										// get Artist object
-										Artist currentArtist = artistDao.find(Long.valueOf(artist_id));
-										String id = String.valueOf(currentArtist.getId()); // get artist Id
-										
-										String name = currentArtist.getFirstName(); // get artist name
-										if (currentArtist.getLastName() != null) { // (only include last name if not null)
-											name += " " + currentArtist.getLastName();
-										}
-										suggestionsFormatted += name + "\n";
-								%>
-											<!-- display artist card for each suggestion -->
-											<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>>
-											<div class="artist-card card">
-												<h2><%=name %></h2>			
-												<img class="small-img" src=<%= "Images/artists/" + currentArtist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %> width="100">
-											</div>					
-											</a>			
+								
+									<div class="small-grid-container">
+										<%	
+											// iterate through list of artist ids and get artist objects
+											String suggestionsFormatted = "";
+											for (int artist_id : artistSuggestionIds) {
+												// get Artist object
+												Artist currentArtist = artistDao.find(Long.valueOf(artist_id));
+												String id = String.valueOf(currentArtist.getId()); // get artist Id
+												
+												String name = currentArtist.getFirstName(); // get artist name
+												if (currentArtist.getLastName() != null) { // (only include last name if not null)
+													name += " " + currentArtist.getLastName();
+												}
+												suggestionsFormatted += name + "\n";
+										%>
+													<!-- display artist card for each suggestion -->
+													<div class="small-artist-card card gray-background">
+														<a href=<%=base + "?action=showArtistDetails&artist_id=" + id %>>
+														<div class="card-content">
+															<h2><%=name %></h2>			
+															<img class="small-img" src=<%= "Images/artists/" + currentArtist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %> width="100">
+														</div>					
+														</a>
+													</div>			
+										<%
+											} // end artist suggestion loop
+										%>
+									</div>
 								<%
-									} // end artist suggestion loop
-									
 									// create email template from results
 									String msgSubject = "My YouTunes Discover Results"; // subject
 									String msgSubjectEncoded = URLEncoder.encode(msgSubject, "UTF-8"); // encode subject
