@@ -19,14 +19,30 @@
 <hr>
 
 ## Process
-<p>I began by creating a technical design document including application features, user personas,
+<p>I began by creating a Technical Design Document including application features, user personas,
 user stories and work estimations, and hand-drawn prototypes.</p>
-<p>Development is being completed over the course of three one-week 'sprints'. During each sprint, functional tests are performed
-and documented, and virtual Scrum checkins are done every two days to report on current progress and any roadblocks.</p>
+<p>Development was completed over the course of three one-week sprints. In addition to development during each sprint, I performed
+and documented functional tests and participated in virtual Scrum checkins to report on current progress and roadblocks.</p>
 
-<p><b>Sprint 1:</b> Database design and initialization; creation of core classes (Artist and Album); setup of basic JSPs</p>
-<p><b>Sprint 2:</b> Creation of servlet class and database manager classes; completion of some functions including viewing, adding, and updating artists</p>
-<p><b>Sprint 3:</b> Completion of JSPs, including functions to view, add, and update albums; finalizing CSS styling</p>
+<b>Sprint 1:</b>
+<ul>
+   <li>Database design and initialization</li>
+   <li>Creation of core classes (Artist and Album)</li>
+   <li>Setup of basic JSPs</li>
+  </ul>
+  
+<b>Sprint 2:</b>
+<ul>
+  <li>Creation of servlet class and database manager classes</li>
+  <li>Completion of some functions including viewing, adding, and updating artists</li>
+ </ul>
+
+<b>Sprint 3:</b>
+  <ul>
+  <li>Completion of JSPs, including functions to view, add, and update albums</li>
+  <li>Implementation of the Discover interface</li>
+  <li>Finalizing CSS styling</li>
+ </ul>
 
 <hr>
 
