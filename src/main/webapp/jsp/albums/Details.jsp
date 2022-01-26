@@ -49,7 +49,7 @@
 							<h3><%=album.getReleaseYear() %></h3>
 							<h3><%=album.getGenre() %></h3>
 							<div>
-								<h3 class="inline"><%=album.getPrice() %></h3>
+								<h3 class="inline"><%=String.format("%.2f", album.getPrice()) %></h3>
 								<button type="button" class="button inline margin-left">Purchase</button>
 							</div>
 						</div>
