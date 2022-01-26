@@ -113,7 +113,7 @@
 							
 							<tr class="form-field">
 								<td><label for="price" class="inline-block">Price:</label></td>
-								<td><input type="text" class="inline-block" id="price" name="price" value="<%=album.getPrice() %>"></td>
+								<td><input type="text" class="inline-block" id="price" name="price" value="<%=String.format("%.2f", album.getPrice()) %>"></td>
 							</tr>
 							
 							<tr class="form-field">
