@@ -7,14 +7,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.Servlet;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import youtunes.model.Album;
 import youtunes.model.Artist;
