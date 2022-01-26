@@ -1,4 +1,4 @@
-package youtunes;
+package youtunes.model;
 
 /*
  * This is an interface that extends the GenericDao interface by using the Artist class.

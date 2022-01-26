@@ -16,10 +16,10 @@ import jakarta.servlet.annotation.WebServlet;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import youtunes.Album;
-import youtunes.Artist;
-import youtunes.JdbcAlbumDao;
-import youtunes.JdbcArtistDao;
+import youtunes.model.Album;
+import youtunes.model.Artist;
+import youtunes.model.JdbcAlbumDao;
+import youtunes.model.JdbcArtistDao;
 
 @WebServlet(name = "YouTunesServlet", urlPatterns="/yt/*")
 public class YouTunesServlet extends HttpServlet {

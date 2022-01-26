@@ -1,4 +1,4 @@
-package youtunes;
+package youtunes.model;
 
 public class Artist {
 	private int id;

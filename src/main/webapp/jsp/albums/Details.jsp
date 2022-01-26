@@ -9,10 +9,10 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;700&family=VT323&display=swap" rel="stylesheet">
-		<%@page import="youtunes.JdbcArtistDao, youtunes.Artist, youtunes.JdbcAlbumDao, youtunes.Album" %>
+		<%@page import="youtunes.model.JdbcArtistDao, youtunes.model.Artist, youtunes.model.JdbcAlbumDao, youtunes.model.Album" %>
 		<%@ page import="java.util.List, java.util.ArrayList" %>
-		<jsp:useBean id="albumDao" scope="application" class="youtunes.JdbcAlbumDao" />
-		<jsp:useBean id="artistDao" scope="application" class="youtunes.JdbcArtistDao" />
+		<jsp:useBean id="albumDao" scope="application" class="youtunes.model.JdbcAlbumDao" />
+		<jsp:useBean id="artistDao" scope="application" class="youtunes.model.JdbcArtistDao" />
 		
 		<% String base = (String)application.getAttribute("base"); %>
 		

@@ -1,4 +1,4 @@
-package youtunes;
+package youtunes.model;
 
 public class Album {
 	// properties

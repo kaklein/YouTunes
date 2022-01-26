@@ -9,7 +9,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;700&family=VT323&display=swap" rel="stylesheet">
-		<jsp:useBean id="artistDao" scope="application" class="youtunes.JdbcArtistDao" />
+		<jsp:useBean id="artistDao" scope="application" class="youtunes.model.JdbcArtistDao" />
 		
 		<title>YouTunes | New Artist</title>
 	</head>

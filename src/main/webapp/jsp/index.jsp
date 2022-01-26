@@ -9,9 +9,9 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 		<%@page import="java.util.ArrayList, java.util.List" %>
-		<%@page import="youtunes.Album" %>
+		<%@page import="youtunes.model.Album" %>
 		<% String base = (String)application.getAttribute("base"); %>
-		<jsp:useBean id="albumDao" scope="application" class="youtunes.JdbcAlbumDao" />
+		<jsp:useBean id="albumDao" scope="application" class="youtunes.model.JdbcAlbumDao" />
 		
 		
 		<title>YouTunes | Discover</title>

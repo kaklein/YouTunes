@@ -1,4 +1,4 @@
-package youtunes;
+package youtunes.model;
 
 import java.util.List;
 
