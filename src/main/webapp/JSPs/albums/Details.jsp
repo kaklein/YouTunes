@@ -50,7 +50,7 @@
 							<h3><%=album.getGenre() %></h3>
 							<div>
 								<h3 class="inline"><%=album.getPrice() %></h3>
-								<button type="button" class="button inline">Purchase</button>
+								<button type="button" class="button inline margin-left">Purchase</button>
 							</div>
 						</div>
 					</div>

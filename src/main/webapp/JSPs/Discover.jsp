@@ -52,7 +52,7 @@
 						%>
 								<!-- create checkbox for each subgenre (if checked in previous submission, keep it checked) -->
 								<div class="checkbox-pair block">
-									<input type="checkbox" name="genre[]" id=<%=genre %> value=<%=genre %>
+									<input type="checkbox" name="genre[]" class="p" id=<%=genre %> value=<%=genre %>
 										<%if(previousSelectedGenres.contains(genre)){ %> checked <% } %>/>
 									<label for =<%=genre%>><%=genre %></label>			
 								</div>
@@ -82,7 +82,7 @@
 						%>
 								<!-- create checkbox for each decade (if checked in previous submission, keep it checked) -->
 								<div class="checkbox-pair block">
-									<input type="checkbox" name="year[]" id=<%=yearBase %> value=<%= yearBase%>
+									<input type="checkbox" name="year[]" class="p" id=<%=yearBase %> value=<%= yearBase%>
 										<%if(previousSelectedYears.contains(yearBase)){ %> checked <%} %>/>
 									<label for=<%=yearBase %>><%=yearOption %></label>
 								</div>
@@ -130,11 +130,11 @@
 										<h3 class="center-text">Because you selected</h3>
 										<p class="center-text">
 										<%
-											String genresFormatted = "";
-											for (String genre : selectedGenresList) {
-												genresFormatted += genre + ", ";
+											String genresFormatted = selectedGenresList.get(0);
+											for (int i = 1; i < selectedGenresList.size(); i++) {
+												genresFormatted += ", " + selectedGenresList.get(i);
 											}		
-											out.print(genresFormatted);
+											out.print(genresFormatted + ", ");
 											
 											String decadesFormatted = selectedYearsList.get(0) + "0s";
 											for (int i = 1; i < selectedYearsList.size(); i++) {

@@ -22,8 +22,8 @@
 			
 			<h1 class="center-text">Contact</h1>
 			
-			<div class="address center-text gray-background">
-				<div class="content-card inline-block">
+			<div class="address center-text">
+				<div class="content-card inline-block address-content">
 					<h2>Address</h2>
 					<p>1500 Music Road</p>
 					<p>Cityville, NE 68111</p>

@@ -42,7 +42,7 @@
 					}
 			%>
 					<!-- display artist details -->
-					<div class="artist-card card">
+					<div class="artist-card card center-text">
 						<h1 class="center-text"><%=name %></h1>
 						<img class="large-img" src=<%= "Images/artists/" + artist.getImgUrl() + ".jpeg" %> alt=<%=name + " photo" %>>
 					</div>

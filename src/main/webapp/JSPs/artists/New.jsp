@@ -30,12 +30,12 @@
 					
 					<tr class="form-field">
 						<td><label for="first_name" class="inline-block">First name:</label></td>
-						<td><input type="text" class="inline-block" id="first_name" name="first_name" placeholder="John"/></td>
+						<td><input type="text" class="inline-block" id="first_name" name="first_name"/></td>
 					</tr>
 					
 					<tr class="form-field">
 						<td><label for="last_name" class="inline-block">Last name:</label></td>
-						<td><input type="text" class="inline-block" id="last_name" name="last_name" placeholder="Lennon"/></td>
+						<td><input type="text" class="inline-block" id="last_name" name="last_name"/></td>
 					</tr>
 					
 					<tr class="form-field">

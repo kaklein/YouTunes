@@ -10,7 +10,9 @@
 	<body>
 		<footer>
 			<!-- Copyright -->
-		  <div class="copyright">© Katie Klein 2021</div>
+		  <div class="copyright">
+		  	<p>© Katie Klein 2021 | <a href="https://www.bellevue.edu" target="_blank">Bellevue University</a></p>
+		  </div>
 		</footer>
 	</body>
 </html>
