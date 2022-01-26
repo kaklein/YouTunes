@@ -45,7 +45,7 @@ public class YouTunesServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String base = "/JSPs/";
+		String base = "/jsp/";
 		String url = base + "index.jsp"; // define default url
 		String action = request.getParameter("action"); // get value of 'action' parameter
 		

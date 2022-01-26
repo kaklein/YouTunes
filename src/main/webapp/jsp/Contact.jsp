@@ -18,7 +18,7 @@
 	<body>
 		<div class="main-content">
 			<!-- include top nav menu -->
-			<jsp:include page="//JSPs/TopNav.jsp" flush="true"/>
+			<jsp:include page="//jsp/TopNav.jsp" flush="true"/>
 			
 			<h1 class="center-text">Contact</h1>
 			
@@ -39,7 +39,7 @@
 		</div>
 		
 		<!-- include footer  -->
-		<jsp:include page="//JSPs/Footer.jsp" flush="true"/>
+		<jsp:include page="//jsp/Footer.jsp" flush="true"/>
 		
 			<!-- script footer for JavaScript files -->
 		<jsp:include page="ScriptFooter.jsp" flush="true"/>

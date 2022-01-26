@@ -18,7 +18,7 @@
   </servlet> 
   
   <welcome-file-list>
-   <welcome-file>yt/JSPs/index.jsp</welcome-file>
+   <welcome-file>yt/jsp/index.jsp</welcome-file>
 </welcome-file-list>
   
 </web-app>

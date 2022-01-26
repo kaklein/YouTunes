@@ -17,7 +17,7 @@
 	<body>
 		<div class="main-content">
 			<!-- include top nav menu -->
-			<jsp:include page="//JSPs/TopNav.jsp" flush="true"/>
+			<jsp:include page="//jsp/TopNav.jsp" flush="true"/>
 			
 			<!-- form to add a new artist to the database -->
 			<form>
@@ -52,6 +52,6 @@
 		</div>
 		
 		<!-- include footer  -->
-		<jsp:include page="//JSPs/Footer.jsp" flush="true"/>
+		<jsp:include page="//jsp/Footer.jsp" flush="true"/>
 	</body>
 </html>
