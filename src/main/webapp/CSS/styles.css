@@ -21,6 +21,7 @@ body {
 	position: relative;
 	min-height: 90%;
 	padding: 0 0 150px;
+	margin: 0;
 }
 
 h1 {
@@ -43,21 +44,106 @@ p, .p, input, label {
 /********* NAV-BAR *********/
 
 .nav-bar {
-	display: block;
-	padding-bottom: 40px;
-	padding-top: 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 0;
+	padding-bottom: 0;
+	border-bottom: 2px solid var(--lighter-background-color);
 }
 
-#logo {
+.nav-links li:hover {
+	background-color: var(--lighter-background-color);
+	color: var(--highlight-text-color);
+}
+
+.nav-links ul {
+	margin: 0;
+	padding-right: 2em;
+	display: flex;
+}
+
+.nav-links li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
 	vertical-align: bottom;
 }
 
-/********* LINKS *********/
-
-.nav-link {
-	display: inline;
-	margin: 25px;
+.nav-links li h2 {
+	padding: 0;
+	margin: 0;
 }
+
+.nav-links li h2 a {
+	display: block;
+	padding: 1em;
+	height: 100%;
+}
+
+#logo {
+	padding-left: 2em;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.toggle-button {
+	position: absolute;
+	top: .75em;
+	right: 1em;
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 50px;
+	height: 35px;
+	padding: 1em;
+	padding-top: 2em;
+}
+
+.toggle-button .bar {
+	height: 3px;
+	width: 100%;
+	background-color: var(--main-text-color);
+	border-radius: 10px;
+}
+
+@media (max-width: 1024px){
+	.toggle-button {
+		display: flex;
+	}
+	
+	.nav-links {
+		width: 100%;
+		display: none;
+	}
+	
+	.nav-links li {
+		text-align: center;
+	}
+	
+	.nav-links li h2 a {
+		padding: .3em;
+		margin: 0;
+	}
+	
+	.nav-links ul {
+		flex-direction: column;	
+		width: 100%;
+	}
+	
+	.nav-bar{
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	
+	.nav-links.active {
+		display: flex;
+	}
+}
+
+
+
+/********* LINKS *********/
 
 a {
 	color: var(--main-text-color);

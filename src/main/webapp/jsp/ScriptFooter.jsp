@@ -8,6 +8,6 @@
 	</head>
 	
 	<body>
-	
+		<script src="scripts/responsive-navbar.js"></script>
 	</body>
 </html>

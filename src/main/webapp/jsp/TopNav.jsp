@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<!-- 
+	Responsive hamburger menu code comes from Web Dev Simplified tutorial:
+	https://www.youtube.com/watch?v=At4B7A4GOPg 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -12,27 +18,22 @@
 		<div id="top-nav" class="nav-bar">
 			<!-- Logo -->
 			<div id="logo" class="nav-link inline">
-				<a href=<%=base + "?action=goToIndex" %>><img src="/youtunes/Images/youtunes-logo-transparent.png" alt="YouTunes logo" width="150"></a>
+				<a href=<%=base + "?action=goToIndex" %>><img src="/youtunes/Images/youtunes-logo-transparent.png" alt="YouTunes logo" width="120"></a>
 			</div>
 			
-			<!-- Artists -->
-			<div id="artists-tab" class="nav-link">
-				<h2 class="inline"><a href=<%=base + "?action=goToArtists" %>>ARTISTS</a></h2>
-			</div>
+			<a href="#" class="toggle-button">
+				<span class="bar"></span>
+				<span class="bar"></span>
+				<span class="bar"></span>
+			</a>
 			
-			<!-- Discover -->
-			<div id="discover-tab" class="nav-link">
-				<h2 class="inline"><a href=<%=base + "?action=goToDiscover" %>>DISCOVER</a></h2>
-			</div>
-			
-			<!-- About -->
-			<div id="about-tab" class="nav-link">
-				<h2 class="inline"><a href=<%=base + "?action=goToAbout" %>>ABOUT</a></h2>
-			</div>
-			
-			<!-- Contact -->
-			<div id="contact-tab" class="nav-link">
-				<h2 class="inline"><a href=<%=base + "?action=goToContact" %>>CONTACT</a></h2>
+			<div class="nav-links">
+				<ul>
+					<li><h2><a href=<%=base + "?action=goToArtists" %>>ARTISTS</a></h2></li>
+					<li><h2><a href=<%=base + "?action=goToDiscover" %>>DISCOVER</a></h2></li>
+					<li><h2><a href=<%=base + "?action=goToAbout" %>>ABOUT</a></h2></li>
+					<li><h2><a href=<%=base + "?action=goToContact" %>>CONTACT</a></h2></li>
+				</ul>
 			</div>
 	
 		</div>

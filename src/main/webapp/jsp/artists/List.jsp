@@ -61,6 +61,9 @@
 		
 		<!-- include footer  -->
 		<jsp:include page="//jsp/Footer.jsp" flush="true"/>
+		
+		<!-- script footer for JavaScript files -->
+		<jsp:include page="../ScriptFooter.jsp" flush="true"/>
 	</body>
 	
 </html>
