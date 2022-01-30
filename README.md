@@ -1,8 +1,10 @@
-# YouTunes
+<h1 align="center">YouTunes</h1>
 
-<img width="150" alt="youtunes-logo" src="https://user-images.githubusercontent.com/71147550/150875361-a06ad4e6-d604-4c9f-83b9-c51e84e9c342.png">
-<p><i>Capstone project for my BS in Software Development.</i></p>
+<p align="center"><img width="150" alt="youtunes-logo" src="https://user-images.githubusercontent.com/71147550/150875361-a06ad4e6-d604-4c9f-83b9-c51e84e9c342.png"></p>
+<p align="center"><i>Capstone project for my BS in Software Development</i></p>
+<br>
 
+## Overview
 <p><b>YouTunes is a dynamic web application which allows users to:</b></p>
 <ul>
   <li>Browse artists and albums</li>
@@ -46,24 +48,41 @@ and documented functional tests and participated in virtual Scrum checkins to re
 
 <hr>
 
-# Screenshots
+## Screenshots
 
-<b><p>Homepage (album display)</p></b>
-<img width="800" alt="youtunes-homepage" src="https://user-images.githubusercontent.com/71147550/150874167-86cde4a1-f8e0-4394-80a8-610d777d80a5.png">
+<b><h3>Homepage</h3></b>
+<p>The homepage displays all albums in the database. <i>Pictured: desktop view</i></p>
+
+<img width="800" alt="youtunes-homepage" src="https://user-images.githubusercontent.com/71147550/151681947-f7d1160f-d4a7-4154-b480-17cd1365b9e7.png">
 <br>
 
-<b><p>Artists</p></b>
-<img width="800" alt="youtunes-artists" src="https://user-images.githubusercontent.com/71147550/150874242-d4987378-052b-42f6-8597-92e06f42a2a6.png">
+
+<b><h3>Responsive Nav Bar</h3></b>
+
+<p>Responsive design means that on smaller screens, the navigation bar links are replaced by a hamburger icon which toggles between displaying and collapsing the menu options.</p>
+<p float="left">
+  <img width="400" alt="youtunes-artists-expanded-menu" src="https://user-images.githubusercontent.com/71147550/151681955-e6ddc734-e1e2-40a5-8f05-187486de9f46.png">
+  <img width="400" alt="youtunes-artists-collapsed-menu" src="https://user-images.githubusercontent.com/71147550/151682069-7c81fb6e-75a1-4504-8836-f59a0685324b.png">
+</p>
+
 <br>
 
-<b><p>Discover tool</p></b>
-<p>Users select genre(s) and decade(s) to get suggestions of artists they may like</p>
-<img width="500" alt="youtunes-discover-form" src="https://user-images.githubusercontent.com/71147550/150874449-68c6006f-e3a2-4d51-8f8b-3cf86a6e49d1.png">
+
+<b><h3>Discover tool</h3></b>
+
+<b><p>:arrow_right: Form</p></b>
+<p>Users select genre(s) and decade(s) to get suggestions of artists they may like.</p>
+<img width="700" alt="youtunes-discover" src="https://user-images.githubusercontent.com/71147550/151682019-dafe2944-bff7-4f97-97bf-a6590462525a.png">
+
+<b><p>:arrow_right: Results</p></b>
 <p>The database is queried via the servlet to get artists that match some or all of the user's selections.</p>
 <p>Results are displayed and users can click on an artist to go to their details page.</p>
-<img width="700" alt="youtunes-discover-results" src="https://user-images.githubusercontent.com/71147550/150874435-a4e3839d-aec4-4195-beb0-8e8e12eda345.png">
+<img width="700" alt="youtunes-discover-results" src="https://user-images.githubusercontent.com/71147550/151682024-b78b39fc-e819-4241-99b4-74d46677f1b2.png">
+
+<b><p>:arrow_right: Email Option</p></b>
 <p>At the bottom of the page, there's an "Email my results" button which opens the user's email client with a pre-populated email so that they can easily send themselves/anyone else their artist suggestions.</p>
 
 <hr>
+
 <p><i>Parts of this project's implementation are based on the course example at https://github.com/buwebdev/youtunes</i></p>
  
