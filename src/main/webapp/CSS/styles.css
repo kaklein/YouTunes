@@ -419,6 +419,10 @@ footer {
 	margin-left: 10px;
 }
 
+.padding {
+	padding: 20px;
+}
+
 .yellow {
 	color: var(--highlight-text-color);
 }

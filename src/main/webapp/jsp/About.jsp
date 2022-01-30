@@ -21,7 +21,7 @@
 			<div class="content-card">
 				<h1 class="center-text">About</h1>
 				<p class="center-text yellow">YouTunes is the new big thing in music.</p>
-				<p class="center-text">
+				<p class="center-text padding">
 					Browse, discover, download, and stream from our wide selection of albums.
 					We are proud to have an artist-owned purchasing model, so you know you're
 					directly supporting the artists you love.
